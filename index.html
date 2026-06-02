@@ -15,9 +15,15 @@
     font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
     line-height:1.7;
   }
-  header{
-    text-align:center; padding:48px 20px 24px;
+  /* 语言切换按钮 */
+  #langBtn{
+    position:fixed; top:16px; right:16px; z-index:50; cursor:pointer;
+    background:var(--accent2); color:#fff; border:none; font-family:inherit;
+    font-size:16px; font-weight:800; padding:9px 18px; border-radius:30px;
+    box-shadow:0 4px 0 #2c6699;
   }
+  #langBtn:active{ transform:translateY(2px); box-shadow:0 2px 0 #2c6699; }
+  header{ text-align:center; padding:48px 20px 24px; }
   header h1{
     font-size:clamp(28px,5vw,46px); margin:0 0 10px; color:var(--accent);
     letter-spacing:1px;
@@ -82,23 +88,20 @@
   .card.revealed .reveal{ opacity:1; }
   .hideOnReveal{ transition:opacity .5s ease; }
   .card.revealed .hideOnReveal{ opacity:0; }
-  footer{
-    text-align:center; padding:10px 20px 50px; color:#a98a6c; font-size:13px;
-  }
-  .closing{
-    background:linear-gradient(135deg,#ffe4c0,#ffd0a3);
-    text-align:center;
-  }
+  footer{ text-align:center; padding:10px 20px 50px; color:#a98a6c; font-size:13px; }
+  .closing{ background:linear-gradient(135deg,#ffe4c0,#ffd0a3); text-align:center; }
   .closing h2{ color:#b85c00; }
   .closing p{ font-size:18px; max-width:640px; margin:10px auto; color:#5c4530; }
 </style>
 </head>
 <body>
 
+<button id="langBtn" onclick="setLang(curLang==='zh'?'en':'zh')">EN</button>
+
 <header>
-  <h1>眼睛会骗人？</h1>
-  <p class="sub">大脑的魔法小课堂 · 一起来当小侦探</p>
-  <div class="teacher">
+  <h1 data-i18n="h1">眼睛会骗人？</h1>
+  <p class="sub" data-i18n="sub">大脑的魔法小课堂 · 一起来当小侦探</p>
+  <div class="teacher" data-i18n="teacher">
     <b>给老师的小提示：</b>每一关都先让小朋友<b>猜一猜</b>（哪条长、哪个大、是直还是弯）；
     再按下大按钮，图片会<b>揭晓真相</b>；最后读一读下面的"大脑在想什么"，
     帮小朋友明白——不是眼睛坏了，而是大脑太聪明、太爱帮忙啦。
@@ -108,152 +111,261 @@
 <main>
 
   <section class="card history-intro">
-    <h2>你知道吗？研究"骗眼睛"已经一百多年啦</h2>
-    <p>早在两千多年前，古希腊的<b>亚里士多德</b>就发现：盯着流水看久了，再看旁边的石头，石头好像在往反方向动。
+    <h2 data-i18n="introH">你知道吗？研究"骗眼睛"已经一百多年啦</h2>
+    <p data-i18n="introP">早在两千多年前，古希腊的<b>亚里士多德</b>就发现：盯着流水看久了，再看旁边的石头，石头好像在往反方向动。
     不过像科学家那样认真研究这些图，是大约 170 年前才开始的——<b>1855 年</b>，德国人<b>奥佩尔</b>第一个给它们起了名字，叫"几何视错觉"。
     从那以后，许多科学家各自发现了不同的错觉。下面每一关，差不多都用发现它的那位科学家的名字来命名哦。</p>
   </section>
 
   <section class="card" id="c1">
     <div class="badge">1</div>
-    <h2>两条线，哪条更长？</h2>
-    <p class="lead">先猜一猜：上面那条，还是下面那条更长呢？</p>
+    <h2 data-i18n="c1t">两条线，哪条更长？</h2>
+    <p class="lead" data-i18n="c1l">先猜一猜：上面那条，还是下面那条更长呢？</p>
     <div class="figure"><svg id="svg1" viewBox="0 0 400 240"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>一样长！是两头的小翅膀骗了你。</p>
-      <p class="brain"><b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。</p>
+      <p class="truth" data-i18n="c1tr"><b>真相：</b>一样长！是两头的小翅膀骗了你。</p>
+      <p class="brain" data-i18n="c1b"><b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1889 年，德国医生<b>弗朗茨·缪勒-莱尔</b>第一个画出这对"长翅膀的箭"。它是最有名的视错觉之一，连科学家到今天都还在研究大脑为什么会被它骗到。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c1h">1889 年，德国医生<b>弗朗茨·缪勒-莱尔</b>第一个画出这对"长翅膀的箭"。它是最有名的视错觉之一，连科学家到今天都还在研究大脑为什么会被它骗到。</p>
     </div>
   </section>
 
   <section class="card" id="c2">
     <div class="badge">2</div>
-    <h2>铁轨上的两根木棍</h2>
-    <p class="lead">铁轨上躺着两根黄色木棍，上面的长，还是下面的长？</p>
+    <h2 data-i18n="c2t">铁轨上的两根木棍</h2>
+    <p class="lead" data-i18n="c2l">铁轨上躺着两根黄色木棍，上面的长，还是下面的长？</p>
     <div class="figure"><svg id="svg2" viewBox="0 0 400 260"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>两根一样长！</p>
-      <p class="brain"><b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。</p>
+      <p class="truth" data-i18n="c2tr"><b>真相：</b>两根一样长！</p>
+      <p class="brain" data-i18n="c2b"><b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1911 年，意大利心理学家<b>马里奥·庞佐</b>用"铁轨"做出这个图，告诉大家：我们判断东西大小时，会偷偷把"它有多远"也算进去。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c2h">1911 年，意大利心理学家<b>马里奥·庞佐</b>用"铁轨"做出这个图，告诉大家：我们判断东西大小时，会偷偷考虑"远近"。</p>
     </div>
   </section>
 
   <section class="card" id="c3">
     <div class="badge">3</div>
-    <h2>中间的橙色圆，谁更大？</h2>
-    <p class="lead">左边和右边，中间的橙色圆，哪个更大一点点？</p>
+    <h2 data-i18n="c3t">中间的橙色圆，谁更大？</h2>
+    <p class="lead" data-i18n="c3l">左边和右边，中间的橙色圆，哪个更大一点点？</p>
     <div class="figure"><svg id="svg3" viewBox="0 0 400 260"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>两个橙色圆一样大！</p>
-      <p class="brain"><b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。</p>
+      <p class="truth" data-i18n="c3tr"><b>真相：</b>两个橙色圆一样大！</p>
+      <p class="brain" data-i18n="c3b"><b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>由德国心理学家<b>艾宾浩斯</b>在 100 多年前发现，后来英国学者<b>铁钦纳</b>让它出了名，所以它还有个名字叫"铁钦纳圆"。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c3h">由德国心理学家<b>艾宾浩斯</b>在 100 多年前发现，后来英国学者<b>铁钦纳</b>让它出了名，所以它还有个名字叫"铁钦纳圆"。</p>
     </div>
   </section>
 
   <section class="card" id="c4">
     <div class="badge">4</div>
-    <h2>红线是直的还是弯的？</h2>
-    <p class="lead">中间的两条红线，看起来是不是中间被压弯了？</p>
+    <h2 data-i18n="c4t">红线是直的还是弯的？</h2>
+    <p class="lead" data-i18n="c4l">中间的两条红线，看起来是不是中间被压弯了？</p>
     <div class="figure"><svg id="svg4" viewBox="0 0 400 260"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>笔直笔直的，一点都不弯！</p>
-      <p class="brain"><b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。</p>
+      <p class="truth" data-i18n="c4tr"><b>真相：</b>笔直笔直的，一点都不弯！</p>
+      <p class="brain" data-i18n="c4b"><b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1861 年，德国生理学家<b>埃瓦尔德·黑林</b>发现。他一辈子都在研究眼睛是怎么看颜色和形状的，是位很厉害的视觉科学家。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c4h">1861 年，德国生理学家<b>埃瓦尔德·黑林</b>发现。他一辈子都在研究眼睛是怎么看颜色和形状的，是位很厉害的视觉科学家。</p>
     </div>
   </section>
 
   <section class="card" id="c5">
     <div class="badge">5</div>
-    <h2>这些横排，是斜的吗？</h2>
-    <p class="lead">看看这面黑白小墙，每一排是歪歪扭扭的吗？</p>
+    <h2 data-i18n="c5t">这些横排，是斜的吗？</h2>
+    <p class="lead" data-i18n="c5l">看看这面黑白小墙，每一排是歪歪扭扭的吗？</p>
     <div class="figure"><svg id="svg5" viewBox="0 0 400 232"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>每一排都是平平的、互相平行！</p>
-      <p class="brain"><b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。</p>
+      <p class="truth" data-i18n="c5tr"><b>真相：</b>每一排都是平平的、互相平行！</p>
+      <p class="brain" data-i18n="c5b"><b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>最早在 1894 年由学者<b>闵斯特伯格</b>发现。1973 年，英国科学家<b>格雷戈里</b>在布里斯托一家咖啡馆的墙砖上又看到它——"咖啡墙"这个名字就是这么来的！</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c5h">最早在 1894 年由学者<b>闵斯特伯格</b>发现。1973 年，英国科学家<b>格雷戈里</b>在布里斯托一家咖啡馆的墙砖上又看到它——"咖啡墙"这个名字就是这么来的！</p>
     </div>
   </section>
 
   <section class="card" id="c6">
     <div class="badge">6</div>
-    <h2>中间有个白三角吗？</h2>
-    <p class="lead">你是不是看见中间有一个亮亮的白色三角形？</p>
+    <h2 data-i18n="c6t">中间有个白三角吗？</h2>
+    <p class="lead" data-i18n="c6l">你是不是看见中间有一个亮亮的白色三角形？</p>
     <div class="figure"><svg id="svg6" viewBox="0 0 400 260"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。</p>
-      <p class="brain"><b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。</p>
+      <p class="truth" data-i18n="c6tr"><b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。</p>
+      <p class="brain" data-i18n="c6b"><b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1955 年，意大利心理学家<b>加埃塔诺·卡尼莎</b>发现。这个"看不见的三角"就用他的名字命名，叫"卡尼莎三角"。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c6h">1955 年，意大利心理学家<b>加埃塔诺·卡尼莎</b>发现。这个"看不见的三角"就用他的名字命名，叫"卡尼莎三角"。</p>
     </div>
   </section>
 
   <section class="card" id="c7">
     <div class="badge">7</div>
-    <h2>两个小方块，谁更亮？</h2>
-    <p class="lead">左边深色上的方块，和右边浅色上的方块，哪个更亮？</p>
+    <h2 data-i18n="c7t">两个小方块，谁更亮？</h2>
+    <p class="lead" data-i18n="c7l">左边深色上的方块，和右边浅色上的方块，哪个更亮？</p>
     <div class="figure"><svg id="svg7" viewBox="0 0 400 200"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>两块灰色一模一样！</p>
-      <p class="brain"><b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。</p>
+      <p class="truth" data-i18n="c7tr"><b>真相：</b>两块灰色一模一样！</p>
+      <p class="brain" data-i18n="c7b"><b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1839 年，法国化学家<b>谢弗勒尔</b>在染坊里研究毛线颜色时发现：同一种颜色，旁边的颜色不一样，看起来就不一样。他把它总结成"同时对比定律"。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c7h">1839 年，法国化学家<b>谢弗勒尔</b>在染坊里研究毛线颜色时发现：同一种颜色，旁边的颜色不一样，看起来就不一样。他把它总结成"同时对比定律"。</p>
     </div>
   </section>
 
   <section class="card" id="c8">
     <div class="badge">8</div>
-    <h2>这条灰带，左深右浅吗？</h2>
-    <p class="lead">中间这条灰带，是不是左边深、右边浅，慢慢变亮？</p>
+    <h2 data-i18n="c8t">这条灰带，左深右浅吗？</h2>
+    <p class="lead" data-i18n="c8l">中间这条灰带，是不是左边深、右边浅，慢慢变亮？</p>
     <div class="figure"><svg id="svg8" viewBox="0 0 400 200"></svg></div>
     <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
     <div class="explain">
-      <p class="truth"><b>真相：</b>整条灰带，从头到尾颜色完全一样！</p>
-      <p class="brain"><b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。</p>
+      <p class="truth" data-i18n="c8tr"><b>真相：</b>整条灰带，从头到尾颜色完全一样！</p>
+      <p class="brain" data-i18n="c8b"><b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。</p>
     </div>
     <div class="history">
-      <span class="tag">小档案 · 是谁发现的</span>
-      <p>1865 年，奥地利科学家<b>恩斯特·马赫</b>发现：在明暗交界的地方，大脑会把亮暗的差别夸大。这种现象就用他的名字命名，叫"马赫带"。</p>
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c8h">1865 年，奥地利科学家<b>恩斯特·马赫</b>发现：在明暗交界的地方，大脑会把亮暗的差别夸大。这种现象就用他的名字命名，叫"马赫带"。</p>
     </div>
   </section>
 
   <section class="card closing">
-    <h2>原来如此！</h2>
-    <p>我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。</p>
-    <p>它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。</p>
-    <p>偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！</p>
+    <h2 data-i18n="clH">原来如此！</h2>
+    <p data-i18n="cl1">我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。</p>
+    <p data-i18n="cl2">它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。</p>
+    <p data-i18n="cl3">偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！</p>
   </section>
 
 </main>
 
-<footer>眼睛与大脑的魔法小课堂 · 图形均为现场绘制，可自由放大</footer>
+<footer data-i18n="ft">眼睛与大脑的魔法小课堂 · 图形均为现场绘制，可自由放大</footer>
 
 <script>
+/* ===== 多语言文本 ===== */
+const TR = {
+  h1:{zh:`眼睛会骗人？`, en:`Can Your Eyes Be Fooled?`},
+  sub:{zh:`大脑的魔法小课堂 · 一起来当小侦探`, en:`The Brain's Magic Classroom · Let's Be Detectives!`},
+  teacher:{
+    zh:`<b>给老师的小提示：</b>每一关都先让小朋友<b>猜一猜</b>（哪条长、哪个大、是直还是弯）；再按下大按钮，图片会<b>揭晓真相</b>；最后读一读下面的"大脑在想什么"，帮小朋友明白——不是眼睛坏了，而是大脑太聪明、太爱帮忙啦。`,
+    en:`<b>For teachers:</b> For each puzzle, first let the children <b>take a guess</b> (Which line is longer? Which circle is bigger? Straight or bent?). Then press the big button and the picture will <b>reveal the truth</b>. Finally, read the "What the brain thinks" note together — and help the children see that their eyes aren't broken; their brain is just very clever and loves to help!`},
+  introH:{zh:`你知道吗？研究"骗眼睛"已经一百多年啦`, en:`Did You Know? People Have Studied These Tricks for Over 150 Years`},
+  introP:{
+    zh:`早在两千多年前，古希腊的<b>亚里士多德</b>就发现：盯着流水看久了，再看旁边的石头，石头好像在往反方向动。不过像科学家那样认真研究这些图，是大约 170 年前才开始的——<b>1855 年</b>，德国人<b>奥佩尔</b>第一个给它们起了名字，叫"几何视错觉"。从那以后，许多科学家各自发现了不同的错觉。下面每一关，差不多都用发现它的那位科学家的名字来命名哦。`,
+    en:`Over 2,000 years ago, the ancient Greek thinker <b>Aristotle</b> noticed that after staring at flowing water, nearby rocks seem to drift the other way. But studying these pictures like real scientists only began about 170 years ago — in <b>1855</b>, the German scholar <b>Oppel</b> was the first to give them a name: "geometrical-optical illusions." Since then, many scientists have each discovered different illusions. Almost every puzzle below is named after the scientist who found it!`},
+  ht:{zh:`小档案 · 是谁发现的`, en:`Fact File · Who Discovered It`},
+
+  c1t:{zh:`两条线，哪条更长？`, en:`Two Lines — Which Is Longer?`},
+  c1l:{zh:`先猜一猜：上面那条，还是下面那条更长呢？`, en:`Take a guess: which line is longer, the top one or the bottom one?`},
+  c1tr:{zh:`<b>真相：</b>一样长！是两头的小翅膀骗了你。`, en:`<b>The truth:</b> They're exactly the same length! The little "wings" on the ends fooled you.`},
+  c1b:{zh:`<b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。`, en:`<b>What the brain thinks:</b> When it sees wings spreading outward, the brain feels the line "reaches farther," so it makes the line look longer.`},
+  c1h:{zh:`1889 年，德国医生<b>弗朗茨·缪勒-莱尔</b>第一个画出这对"长翅膀的箭"。它是最有名的视错觉之一，连科学家到今天都还在研究大脑为什么会被它骗到。`, en:`In 1889, the German doctor <b>Franz Müller-Lyer</b> first drew this pair of "winged arrows." It's one of the most famous illusions — scientists still study why the brain falls for it today.`},
+
+  c2t:{zh:`铁轨上的两根木棍`, en:`Two Sticks on the Railway`},
+  c2l:{zh:`铁轨上躺着两根黄色木棍，上面的长，还是下面的长？`, en:`Two yellow sticks lie on the tracks — is the top one or the bottom one longer?`},
+  c2tr:{zh:`<b>真相：</b>两根一样长！`, en:`<b>The truth:</b> Both sticks are the same length!`},
+  c2b:{zh:`<b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。`, en:`<b>What the brain thinks:</b> The tracks get narrower as they go away, so the brain thinks the top stick is "far away." Something that far yet still this wide must be long — so it looks bigger.`},
+  c2h:{zh:`1911 年，意大利心理学家<b>马里奥·庞佐</b>用"铁轨"做出这个图，告诉大家：我们判断东西大小时，会偷偷考虑"远近"。`, en:`In 1911, the Italian psychologist <b>Mario Ponzo</b> made this "railway" picture to show that when we judge size, we secretly factor in how far away something is.`},
+
+  c3t:{zh:`中间的橙色圆，谁更大？`, en:`The Orange Circles — Which Is Bigger?`},
+  c3l:{zh:`左边和右边，中间的橙色圆，哪个更大一点点？`, en:`On the left and on the right, which middle orange circle is a little bigger?`},
+  c3tr:{zh:`<b>真相：</b>两个橙色圆一样大！`, en:`<b>The truth:</b> The two orange circles are exactly the same size!`},
+  c3b:{zh:`<b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。`, en:`<b>What the brain thinks:</b> Next to big neighbours the orange circle looks small; next to small neighbours it looks big. The brain loves to compare with the neighbours.`},
+  c3h:{zh:`由德国心理学家<b>艾宾浩斯</b>在 100 多年前发现，后来英国学者<b>铁钦纳</b>让它出了名，所以它还有个名字叫"铁钦纳圆"。`, en:`Discovered by the German psychologist <b>Ebbinghaus</b> over 100 years ago, and made famous by the British scholar <b>Titchener</b> — that's why it's also called the "Titchener circles."`},
+
+  c4t:{zh:`红线是直的还是弯的？`, en:`Are the Red Lines Straight or Bent?`},
+  c4l:{zh:`中间的两条红线，看起来是不是中间被压弯了？`, en:`Do the two red lines look like they bend outward in the middle?`},
+  c4tr:{zh:`<b>真相：</b>笔直笔直的，一点都不弯！`, en:`<b>The truth:</b> They are perfectly straight — not bent at all!`},
+  c4b:{zh:`<b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。`, en:`<b>What the brain thinks:</b> The background lines look like they rush in from far away, so the brain thinks the picture has "deep space" — and can't help bending the straight lines.`},
+  c4h:{zh:`1861 年，德国生理学家<b>埃瓦尔德·黑林</b>发现。他一辈子都在研究眼睛是怎么看颜色和形状的，是位很厉害的视觉科学家。`, en:`Discovered in 1861 by the German physiologist <b>Ewald Hering</b>. He spent his life studying how the eye sees colour and shape — a great vision scientist.`},
+
+  c5t:{zh:`这些横排，是斜的吗？`, en:`Are These Rows Slanted?`},
+  c5l:{zh:`看看这面黑白小墙，每一排是歪歪扭扭的吗？`, en:`Look at this little black-and-white wall — are the rows crooked?`},
+  c5tr:{zh:`<b>真相：</b>每一排都是平平的、互相平行！`, en:`<b>The truth:</b> Every row is perfectly level and parallel!`},
+  c5b:{zh:`<b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。`, en:`<b>What the brain thinks:</b> The black and white tiles are shifted up and down, and the grey lines between them trick the brain into seeing the straight rows as slanted.`},
+  c5h:{zh:`最早在 1894 年由学者<b>闵斯特伯格</b>发现。1973 年，英国科学家<b>格雷戈里</b>在布里斯托一家咖啡馆的墙砖上又看到它——"咖啡墙"这个名字就是这么来的！`, en:`First noticed in 1894 by the scholar <b>Münsterberg</b>. In 1973 the British scientist <b>Gregory</b> spotted it again on the tiled wall of a café in Bristol — and that's how it got the name "café wall"!`},
+
+  c6t:{zh:`中间有个白三角吗？`, en:`Is There a White Triangle?`},
+  c6l:{zh:`你是不是看见中间有一个亮亮的白色三角形？`, en:`Do you see a bright white triangle in the middle?`},
+  c6tr:{zh:`<b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。`, en:`<b>The truth:</b> There is no triangle on the page at all! Your brain drew those edges itself.`},
+  c6b:{zh:`<b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。`, en:`<b>What the brain thinks:</b> Seeing three circles with bites taken out, the brain guesses "there must be a white triangle on top" — and kindly fills it in for you.`},
+  c6h:{zh:`1955 年，意大利心理学家<b>加埃塔诺·卡尼莎</b>发现。这个"看不见的三角"就用他的名字命名，叫"卡尼莎三角"。`, en:`Discovered in 1955 by the Italian psychologist <b>Gaetano Kanizsa</b>. This "invisible triangle" is named after him — the "Kanizsa triangle."`},
+
+  c7t:{zh:`两个小方块，谁更亮？`, en:`Two Squares — Which Is Brighter?`},
+  c7l:{zh:`左边深色上的方块，和右边浅色上的方块，哪个更亮？`, en:`The square on the dark side and the square on the light side — which one is brighter?`},
+  c7tr:{zh:`<b>真相：</b>两块灰色一模一样！`, en:`<b>The truth:</b> The two greys are exactly the same!`},
+  c7b:{zh:`<b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。`, en:`<b>What the brain thinks:</b> Next to dark it looks bright; next to light it looks dark. When judging colour, the brain always sneaks a peek at the neighbours.`},
+  c7h:{zh:`1839 年，法国化学家<b>谢弗勒尔</b>在染坊里研究毛线颜色时发现：同一种颜色，旁边的颜色不一样，看起来就不一样。他把它总结成"同时对比定律"。`, en:`In 1839, the French chemist <b>Chevreul</b>, studying yarn colours at a dye works, found that the same colour looks different depending on what's next to it. He called it the "law of simultaneous contrast."`},
+
+  c8t:{zh:`这条灰带，左深右浅吗？`, en:`Is This Grey Bar Darker on the Left?`},
+  c8l:{zh:`中间这条灰带，是不是左边深、右边浅，慢慢变亮？`, en:`Does the grey bar look darker on the left and lighter on the right, slowly brightening?`},
+  c8tr:{zh:`<b>真相：</b>整条灰带，从头到尾颜色完全一样！`, en:`<b>The truth:</b> The whole bar is exactly the same colour from end to end!`},
+  c8b:{zh:`<b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。`, en:`<b>What the brain thinks:</b> The background goes from black to white, and the brain gets carried along — so it thinks the bar is changing colour too.`},
+  c8h:{zh:`1865 年，奥地利科学家<b>恩斯特·马赫</b>发现：在明暗交界的地方，大脑会把亮暗的差别夸大。这种现象就用他的名字命名，叫"马赫带"。`, en:`In 1865, the Austrian scientist <b>Ernst Mach</b> found that at the edge between light and dark, the brain exaggerates the difference. This effect is named after him — "Mach bands."`},
+
+  clH:{zh:`原来如此！`, en:`So That's How It Works!`},
+  cl1:{zh:`我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。`, en:`Our eyes and brain are the world's greatest little <strong>detectives</strong>.`},
+  cl2:{zh:`它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。`, en:`Using everything they've learned, they guess what the world looks like — fast, and usually right.`},
+  cl3:{zh:`偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！`, en:`Getting fooled by these pictures now and then just shows how hard-working and clever the brain really is!`},
+  ft:{zh:`眼睛与大脑的魔法小课堂 · 图形均为现场绘制，可自由放大`, en:`The Eyes & Brain Magic Classroom · All figures are drawn live and scale freely`},
+
+  /* 图内文字 */
+  svg1:{zh:`一样长！`, en:`Same length!`},
+  svg2:{zh:`一样长！`, en:`Same length!`},
+  svg3:{zh:`一样大！`, en:`Same size!`},
+  svg4:{zh:`其实是直的！`, en:`Actually straight!`},
+  svg6:{zh:`没有三角形！`, en:`No triangle!`},
+  svg7:{zh:`颜色一样！`, en:`Same colour!`},
+  svg8:{zh:`整条都一样！`, en:`All the same!`}
+};
+const BTN = {zh:{show:`按一下，看真相`, hide:`↺ 再变回去`}, en:{show:`Tap to see the truth`, hide:`↺ Change it back`}};
+const TITLE = {zh:`眼睛会骗人？大脑的魔法小课堂`, en:`Can Your Eyes Be Fooled? · The Brain's Magic Classroom`};
+
+let curLang = (localStorage.getItem('lang') === 'en') ? 'en' : 'zh';
+
+function applyButtons(){
+  document.querySelectorAll('.reveal-btn').forEach(b=>{
+    const rev = b.closest('.card').classList.contains('revealed');
+    b.textContent = BTN[curLang][rev ? 'hide' : 'show'];
+  });
+}
+function setLang(lang){
+  curLang = (lang === 'en') ? 'en' : 'zh';
+  localStorage.setItem('lang', curLang);
+  document.documentElement.lang = (curLang === 'en') ? 'en' : 'zh-CN';
+  document.title = TITLE[curLang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(!TR[key]) return;
+    const v = TR[key][curLang];
+    if(el instanceof SVGElement) el.textContent = v; else el.innerHTML = v;
+  });
+  document.getElementById('langBtn').textContent = (curLang === 'en') ? '中文' : 'EN';
+  applyButtons();
+}
+function toggle(btn){
+  const card = btn.closest(".card");
+  card.classList.toggle("revealed");
+  const rev = card.classList.contains("revealed");
+  btn.textContent = BTN[curLang][rev ? 'hide' : 'show'];
+}
+
+/* ===== 绘图 ===== */
 const NS = "http://www.w3.org/2000/svg";
 function el(tag, attrs){
   const e = document.createElementNS(NS, tag);
@@ -261,66 +373,55 @@ function el(tag, attrs){
   return e;
 }
 function add(svg, tag, attrs){ const e = el(tag, attrs); svg.appendChild(e); return e; }
-function txt(svg, x, y, s, attrs){
+function txt(svg, x, y, key, attrs){
   const t = el("text", Object.assign({x, y, "text-anchor":"middle",
-    "font-family":"PingFang SC, sans-serif", "font-weight":"800"}, attrs||{}));
-  t.textContent = s; svg.appendChild(t); return t;
-}
-function toggle(btn){
-  const card = btn.closest(".card");
-  card.classList.toggle("revealed");
-  btn.textContent = card.classList.contains("revealed") ? "↺ 再变回去" : "按一下，看真相";
+    "font-family":"PingFang SC, sans-serif", "font-weight":"800", "data-i18n":key}, attrs||{}));
+  t.textContent = TR[key].zh; svg.appendChild(t); return t;
 }
 
-/* 1. Müller-Lyer 缪勒-莱尔 */
+/* 1. 缪勒-莱尔 */
 (function(){
   const s = document.getElementById("svg1");
   const L="#3a2e26", W=6;
-  // top line: fins OUT (looks longer)
   add(s,"line",{x1:80,y1:80,x2:320,y2:80,stroke:L,"stroke-width":W,"stroke-linecap":"round"});
   [[80,80,58,60],[80,80,58,100],[320,80,342,60],[320,80,342,100]].forEach(p=>
     add(s,"line",{x1:p[0],y1:p[1],x2:p[2],y2:p[3],stroke:L,"stroke-width":W,"stroke-linecap":"round"}));
-  // bottom line: fins IN (looks shorter)
   add(s,"line",{x1:80,y1:170,x2:320,y2:170,stroke:L,"stroke-width":W,"stroke-linecap":"round"});
   [[80,170,102,150],[80,170,102,190],[320,170,298,150],[320,170,298,190]].forEach(p=>
     add(s,"line",{x1:p[0],y1:p[1],x2:p[2],y2:p[3],stroke:L,"stroke-width":W,"stroke-linecap":"round"}));
-  // reveal: equal-length guides
   [80,320].forEach(x=> add(s,"line",{class:"reveal",x1:x,y1:55,x2:x,y2:195,
     stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"}));
-  txt(s,200,128,"一样长！",{class:"reveal",fill:"#e23b2e","font-size":22});
+  txt(s,200,128,"svg1",{class:"reveal",fill:"#e23b2e","font-size":22});
 })();
 
-/* 2. Ponzo 庞佐 */
+/* 2. 庞佐 */
 (function(){
   const s = document.getElementById("svg2");
   add(s,"line",{class:"hideOnReveal",x1:150,y1:250,x2:185,y2:30,stroke:"#9aa0a6","stroke-width":7,"stroke-linecap":"round"});
   add(s,"line",{class:"hideOnReveal",x1:250,y1:250,x2:215,y2:30,stroke:"#9aa0a6","stroke-width":7,"stroke-linecap":"round"});
-  // sleepers
   for(let i=0;i<5;i++){ const y=60+i*40;
     add(s,"line",{class:"hideOnReveal",x1:175,y1:y,x2:225,y2:y,stroke:"#d8dadd","stroke-width":3}); }
   add(s,"rect",{x:175,y:66,width:50,height:12,rx:3,fill:"#f5821f"});
   add(s,"rect",{x:175,y:204,width:50,height:12,rx:3,fill:"#f5821f"});
   [175,225].forEach(x=> add(s,"line",{class:"reveal",x1:x,y1:58,x2:x,y2:224,
     stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"}));
-  txt(s,200,150,"一样长！",{class:"reveal",fill:"#e23b2e","font-size":22});
+  txt(s,200,150,"svg2",{class:"reveal",fill:"#e23b2e","font-size":22});
 })();
 
-/* 3. Ebbinghaus 艾宾浩斯 */
+/* 3. 艾宾浩斯 */
 (function(){
   const s = document.getElementById("svg3");
-  // surrounders
   for(let i=0;i<6;i++){ const a=i*Math.PI/3;
     add(s,"circle",{class:"hideOnReveal",cx:110+78*Math.cos(a),cy:130+78*Math.sin(a),r:34,fill:"#9bb7d4"}); }
   for(let i=0;i<9;i++){ const a=i*2*Math.PI/9;
     add(s,"circle",{class:"hideOnReveal",cx:290+44*Math.cos(a),cy:130+44*Math.sin(a),r:11,fill:"#9bb7d4"}); }
-  // centers (equal)
   add(s,"circle",{cx:110,cy:130,r:26,fill:"#f5821f"});
   add(s,"circle",{cx:290,cy:130,r:26,fill:"#f5821f"});
   add(s,"line",{class:"reveal",x1:110,y1:130,x2:290,y2:130,stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"});
-  txt(s,200,40,"一样大！",{class:"reveal",fill:"#e23b2e","font-size":22});
+  txt(s,200,40,"svg3",{class:"reveal",fill:"#e23b2e","font-size":22});
 })();
 
-/* 4. Hering 黑林 */
+/* 4. 黑林 */
 (function(){
   const s = document.getElementById("svg4");
   for(let a=0;a<360;a+=12){ const r=a*Math.PI/180;
@@ -328,36 +429,32 @@ function toggle(btn){
       stroke:"#9bb7d4","stroke-width":2}); }
   add(s,"line",{x1:140,y1:20,x2:140,y2:240,stroke:"#e23b2e","stroke-width":6,"stroke-linecap":"round"});
   add(s,"line",{x1:260,y1:20,x2:260,y2:240,stroke:"#e23b2e","stroke-width":6,"stroke-linecap":"round"});
-  txt(s,200,135,"其实是直的！",{class:"reveal",fill:"#1e6b2e","font-size":20});
+  txt(s,200,135,"svg4",{class:"reveal",fill:"#1e6b2e","font-size":20});
 })();
 
-/* 5. Café wall 咖啡墙 */
+/* 5. 咖啡墙 */
 (function(){
   const s = document.getElementById("svg5");
-  add(s,"rect",{x:0,y:0,width:400,height:232,fill:"#9a9a9a"}); // mortar
-  const rowH=36, th=30, tw=40;
-  const mortarY=[];
+  add(s,"rect",{x:0,y:0,width:400,height:232,fill:"#9a9a9a"});
+  const th=30, tw=40;
   for(let r=0;r<6;r++){
     const y=8+r*36, off=(r%2)*20;
-    mortarY.push(y-3);
     for(let c=-1;c<11;c++){
       const x=8+c*tw+off;
       add(s,"rect",{x,y,width:tw,height:th,fill:(c%2===0)?"#161616":"#fbfbfb"});
     }
   }
-  // reveal straight guides on the mortar lines
   for(let r=1;r<6;r++){ const y=8+r*36-3;
     add(s,"line",{class:"reveal",x1:0,y1:y,x2:400,y2:y,stroke:"#e23b2e","stroke-width":3}); }
 })();
 
-/* 6. Kanizsa 卡尼莎三角 */
+/* 6. 卡尼莎三角 */
 (function(){
   const s = document.getElementById("svg6");
   const cx=200, cy=145, r=38;
   const V=[[200,60],[112,212],[288,212]];
   V.forEach(p=>{
     add(s,"circle",{cx:p[0],cy:p[1],r:r,fill:"#2b2b2b"});
-    // carve mouth toward centroid with a white wedge
     const ang=Math.atan2(cy-p[1], cx-p[0]);
     const half=32*Math.PI/180, R=r*1.7;
     const x1=p[0]+R*Math.cos(ang-half), y1=p[1]+R*Math.sin(ang-half);
@@ -366,10 +463,10 @@ function toggle(btn){
   });
   add(s,"polygon",{class:"reveal",points:`${V[0][0]},${V[0][1]} ${V[1][0]},${V[1][1]} ${V[2][0]},${V[2][1]}`,
     fill:"none",stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"7 6"});
-  txt(s,200,30,"没有三角形！",{class:"reveal",fill:"#e23b2e","font-size":20});
+  txt(s,200,30,"svg6",{class:"reveal",fill:"#e23b2e","font-size":20});
 })();
 
-/* 7. Simultaneous contrast 同时对比 */
+/* 7. 同时对比 */
 (function(){
   const s = document.getElementById("svg7");
   add(s,"rect",{x:0,y:0,width:200,height:200,fill:"#202020"});
@@ -377,11 +474,11 @@ function toggle(btn){
   add(s,"rect",{x:55,y:60,width:80,height:80,rx:6,fill:"#8a8a8a"});
   add(s,"rect",{x:265,y:60,width:80,height:80,rx:6,fill:"#8a8a8a"});
   add(s,"rect",{class:"reveal",x:135,y:82,width:130,height:36,fill:"#8a8a8a"});
-  const t=txt(s,200,176,"颜色一样！",{class:"reveal",fill:"#e23b2e","font-size":22,
+  txt(s,200,176,"svg7",{class:"reveal",fill:"#e23b2e","font-size":22,
     stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
 })();
 
-/* 8. Uniform bar on gradient 渐变上的灰带 */
+/* 8. 渐变上的灰带 */
 (function(){
   const s = document.getElementById("svg8");
   const defs=add(s,"defs",{});
@@ -390,11 +487,14 @@ function toggle(btn){
   g.appendChild(el("stop",{offset:"1","stop-color":"#e9e9e9"}));
   defs.appendChild(g);
   add(s,"rect",{x:0,y:0,width:400,height:200,fill:"url(#grad8)"});
-  add(s,"rect",{class:"reveal",x:0,y:0,width:400,height:200,fill:"#777777"}); // cover on reveal
-  add(s,"rect",{x:40,y:80,width:320,height:40,rx:4,fill:"#9a9a9a"});        // uniform bar (drawn last)
-  txt(s,200,160,"整条都一样！",{class:"reveal",fill:"#e23b2e","font-size":22,
+  add(s,"rect",{class:"reveal",x:0,y:0,width:400,height:200,fill:"#777777"});
+  add(s,"rect",{x:40,y:80,width:320,height:40,rx:4,fill:"#9a9a9a"});
+  txt(s,200,160,"svg8",{class:"reveal",fill:"#e23b2e","font-size":22,
     stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
 })();
+
+/* 初始化语言 */
+setLang(curLang);
 </script>
 </body>
 </html>
