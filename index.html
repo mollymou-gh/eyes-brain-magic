@@ -63,6 +63,20 @@
   .explain .truth b{ color:var(--accent); }
   .explain .brain{ color:#6a8fb0; }
   .explain .brain b{ color:var(--accent2); }
+  /* 小档案 / 历史方框 */
+  .history{
+    margin-top:14px; background:#eef4fb; border-left:6px solid var(--accent2);
+    border-radius:0 14px 14px 0; padding:13px 18px; font-size:15px; color:#4a5f70;
+  }
+  .history .tag{
+    display:inline-block; font-size:13px; font-weight:800; color:#fff;
+    background:var(--accent2); padding:3px 12px; border-radius:20px; margin-bottom:8px;
+  }
+  .history p{ margin:0; line-height:1.65; }
+  .history b{ color:#2c5f86; }
+  .history-intro{ background:#eaf2fb; }
+  .history-intro h2{ color:var(--accent2); }
+  .history-intro p{ font-size:17px; color:#3f5468; }
   /* reveal animation hooks */
   .reveal{ opacity:0; transition:opacity .5s ease; }
   .card.revealed .reveal{ opacity:1; }
@@ -93,6 +107,13 @@
 
 <main>
 
+  <section class="card history-intro">
+    <h2>你知道吗？研究"骗眼睛"已经一百多年啦</h2>
+    <p>早在两千多年前，古希腊的<b>亚里士多德</b>就发现：盯着流水看久了，再看旁边的石头，石头好像在往反方向动。
+    不过像科学家那样认真研究这些图，是大约 170 年前才开始的——<b>1855 年</b>，德国人<b>奥佩尔</b>第一个给它们起了名字，叫"几何视错觉"。
+    从那以后，许多科学家各自发现了不同的错觉。下面每一关，差不多都用发现它的那位科学家的名字来命名哦。</p>
+  </section>
+
   <section class="card" id="c1">
     <div class="badge">1</div>
     <h2>两条线，哪条更长？</h2>
@@ -102,6 +123,10 @@
     <div class="explain">
       <p class="truth"><b>真相：</b>一样长！是两头的小翅膀骗了你。</p>
       <p class="brain"><b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。</p>
+    </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1889 年，德国医生<b>弗朗茨·缪勒-莱尔</b>第一个画出这对"长翅膀的箭"。它是最有名的视错觉之一，连科学家到今天都还在研究大脑为什么会被它骗到。</p>
     </div>
   </section>
 
@@ -115,6 +140,10 @@
       <p class="truth"><b>真相：</b>两根一样长！</p>
       <p class="brain"><b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。</p>
     </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1911 年，意大利心理学家<b>马里奥·庞佐</b>用"铁轨"做出这个图，告诉大家：我们判断东西大小时，会偷偷把"它有多远"也算进去。</p>
+    </div>
   </section>
 
   <section class="card" id="c3">
@@ -126,6 +155,10 @@
     <div class="explain">
       <p class="truth"><b>真相：</b>两个橙色圆一样大！</p>
       <p class="brain"><b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。</p>
+    </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>由德国心理学家<b>艾宾浩斯</b>在 100 多年前发现，后来英国学者<b>铁钦纳</b>让它出了名，所以它还有个名字叫"铁钦纳圆"。</p>
     </div>
   </section>
 
@@ -139,6 +172,10 @@
       <p class="truth"><b>真相：</b>笔直笔直的，一点都不弯！</p>
       <p class="brain"><b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。</p>
     </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1861 年，德国生理学家<b>埃瓦尔德·黑林</b>发现。他一辈子都在研究眼睛是怎么看颜色和形状的，是位很厉害的视觉科学家。</p>
+    </div>
   </section>
 
   <section class="card" id="c5">
@@ -150,6 +187,10 @@
     <div class="explain">
       <p class="truth"><b>真相：</b>每一排都是平平的、互相平行！</p>
       <p class="brain"><b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。</p>
+    </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>最早在 1894 年由学者<b>闵斯特伯格</b>发现。1973 年，英国科学家<b>格雷戈里</b>在布里斯托一家咖啡馆的墙砖上又看到它——"咖啡墙"这个名字就是这么来的！</p>
     </div>
   </section>
 
@@ -163,6 +204,10 @@
       <p class="truth"><b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。</p>
       <p class="brain"><b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。</p>
     </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1955 年，意大利心理学家<b>加埃塔诺·卡尼莎</b>发现。这个"看不见的三角"就用他的名字命名，叫"卡尼莎三角"。</p>
+    </div>
   </section>
 
   <section class="card" id="c7">
@@ -175,6 +220,10 @@
       <p class="truth"><b>真相：</b>两块灰色一模一样！</p>
       <p class="brain"><b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。</p>
     </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1839 年，法国化学家<b>谢弗勒尔</b>在染坊里研究毛线颜色时发现：同一种颜色，旁边的颜色不一样，看起来就不一样。他把它总结成"同时对比定律"。</p>
+    </div>
   </section>
 
   <section class="card" id="c8">
@@ -186,6 +235,10 @@
     <div class="explain">
       <p class="truth"><b>真相：</b>整条灰带，从头到尾颜色完全一样！</p>
       <p class="brain"><b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。</p>
+    </div>
+    <div class="history">
+      <span class="tag">小档案 · 是谁发现的</span>
+      <p>1865 年，奥地利科学家<b>恩斯特·马赫</b>发现：在明暗交界的地方，大脑会把亮暗的差别夸大。这种现象就用他的名字命名，叫"马赫带"。</p>
     </div>
   </section>
 
