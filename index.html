@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>眼睛会骗人？大脑的魔法小课堂</title>
+<style>
+  :root{
+    --bg:#fff7ed; --ink:#3a2e26; --accent:#f5821f; --accent2:#3b82c4;
+    --card:#ffffff; --soft:#fff0db; --line:#f0d9bd;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    line-height:1.7;
+  }
+  header{
+    text-align:center; padding:48px 20px 24px;
+  }
+  header h1{
+    font-size:clamp(28px,5vw,46px); margin:0 0 10px; color:var(--accent);
+    letter-spacing:1px;
+  }
+  header p.sub{ font-size:clamp(16px,2.5vw,20px); margin:0; color:#8a6f57; }
+  .teacher{
+    max-width:760px; margin:18px auto 0; background:var(--soft);
+    border:2px dashed var(--line); border-radius:18px; padding:14px 22px;
+    font-size:15px; color:#7a6047; text-align:left;
+  }
+  .teacher b{color:var(--accent2);}
+  main{ max-width:820px; margin:0 auto; padding:20px 16px 60px; }
+  .card{
+    background:var(--card); border-radius:26px; padding:26px 26px 30px;
+    margin:26px 0; box-shadow:0 10px 30px rgba(180,120,40,.12);
+    position:relative; overflow:hidden;
+  }
+  .badge{
+    position:absolute; top:-2px; left:24px;
+    background:var(--accent); color:#fff; font-weight:800; font-size:20px;
+    width:46px; height:46px; border-radius:0 0 16px 16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card h2{ margin:26px 0 4px; font-size:clamp(21px,3.4vw,27px); }
+  .card .lead{ margin:0 0 16px; color:#8a6f57; font-size:17px; }
+  .figure{
+    background:#fff; border-radius:18px; padding:10px;
+    display:flex; justify-content:center;
+  }
+  .figure svg{ width:100%; max-width:440px; height:auto; }
+  .reveal-btn{
+    display:block; margin:18px auto 0; cursor:pointer;
+    background:var(--accent2); color:#fff; border:none;
+    font-size:19px; font-weight:700; padding:13px 30px; border-radius:40px;
+    box-shadow:0 6px 0 #2c6699; transition:transform .08s, box-shadow .08s;
+    font-family:inherit;
+  }
+  .reveal-btn:active{ transform:translateY(4px); box-shadow:0 2px 0 #2c6699; }
+  .explain{
+    margin-top:18px; background:var(--soft); border-radius:16px; padding:16px 20px;
+  }
+  .explain p{ margin:6px 0; font-size:17px; }
+  .explain .truth b{ color:var(--accent); }
+  .explain .brain{ color:#6a8fb0; }
+  .explain .brain b{ color:var(--accent2); }
+  /* reveal animation hooks */
+  .reveal{ opacity:0; transition:opacity .5s ease; }
+  .card.revealed .reveal{ opacity:1; }
+  .hideOnReveal{ transition:opacity .5s ease; }
+  .card.revealed .hideOnReveal{ opacity:0; }
+  footer{
+    text-align:center; padding:10px 20px 50px; color:#a98a6c; font-size:13px;
+  }
+  .closing{
+    background:linear-gradient(135deg,#ffe4c0,#ffd0a3);
+    text-align:center;
+  }
+  .closing h2{ color:#b85c00; }
+  .closing p{ font-size:18px; max-width:640px; margin:10px auto; color:#5c4530; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>眼睛会骗人？</h1>
+  <p class="sub">大脑的魔法小课堂 · 一起来当小侦探</p>
+  <div class="teacher">
+    <b>给老师的小提示：</b>每一关都先让小朋友<b>猜一猜</b>（哪条长、哪个大、是直还是弯）；
+    再按下大按钮，图片会<b>揭晓真相</b>；最后读一读下面的"大脑在想什么"，
+    帮小朋友明白——不是眼睛坏了，而是大脑太聪明、太爱帮忙啦。
+  </div>
+</header>
+
+<main>
+
+  <section class="card" id="c1">
+    <div class="badge">1</div>
+    <h2>两条线，哪条更长？</h2>
+    <p class="lead">先猜一猜：上面那条，还是下面那条更长呢？</p>
+    <div class="figure"><svg id="svg1" viewBox="0 0 400 240"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>一样长！是两头的小翅膀骗了你。</p>
+      <p class="brain"><b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c2">
+    <div class="badge">2</div>
+    <h2>铁轨上的两根木棍</h2>
+    <p class="lead">铁轨上躺着两根黄色木棍，上面的长，还是下面的长？</p>
+    <div class="figure"><svg id="svg2" viewBox="0 0 400 260"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>两根一样长！</p>
+      <p class="brain"><b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c3">
+    <div class="badge">3</div>
+    <h2>中间的橙色圆，谁更大？</h2>
+    <p class="lead">左边和右边，中间的橙色圆，哪个更大一点点？</p>
+    <div class="figure"><svg id="svg3" viewBox="0 0 400 260"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>两个橙色圆一样大！</p>
+      <p class="brain"><b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c4">
+    <div class="badge">4</div>
+    <h2>红线是直的还是弯的？</h2>
+    <p class="lead">中间的两条红线，看起来是不是中间被压弯了？</p>
+    <div class="figure"><svg id="svg4" viewBox="0 0 400 260"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>笔直笔直的，一点都不弯！</p>
+      <p class="brain"><b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c5">
+    <div class="badge">5</div>
+    <h2>这些横排，是斜的吗？</h2>
+    <p class="lead">看看这面黑白小墙，每一排是歪歪扭扭的吗？</p>
+    <div class="figure"><svg id="svg5" viewBox="0 0 400 232"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>每一排都是平平的、互相平行！</p>
+      <p class="brain"><b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c6">
+    <div class="badge">6</div>
+    <h2>中间有个白三角吗？</h2>
+    <p class="lead">你是不是看见中间有一个亮亮的白色三角形？</p>
+    <div class="figure"><svg id="svg6" viewBox="0 0 400 260"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。</p>
+      <p class="brain"><b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c7">
+    <div class="badge">7</div>
+    <h2>两个小方块，谁更亮？</h2>
+    <p class="lead">左边深色上的方块，和右边浅色上的方块，哪个更亮？</p>
+    <div class="figure"><svg id="svg7" viewBox="0 0 400 200"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>两块灰色一模一样！</p>
+      <p class="brain"><b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。</p>
+    </div>
+  </section>
+
+  <section class="card" id="c8">
+    <div class="badge">8</div>
+    <h2>这条灰带，左深右浅吗？</h2>
+    <p class="lead">中间这条灰带，是不是左边深、右边浅，慢慢变亮？</p>
+    <div class="figure"><svg id="svg8" viewBox="0 0 400 200"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth"><b>真相：</b>整条灰带，从头到尾颜色完全一样！</p>
+      <p class="brain"><b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。</p>
+    </div>
+  </section>
+
+  <section class="card closing">
+    <h2>原来如此！</h2>
+    <p>我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。</p>
+    <p>它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。</p>
+    <p>偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！</p>
+  </section>
+
+</main>
+
+<footer>眼睛与大脑的魔法小课堂 · 图形均为现场绘制，可自由放大</footer>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+function add(svg, tag, attrs){ const e = el(tag, attrs); svg.appendChild(e); return e; }
+function txt(svg, x, y, s, attrs){
+  const t = el("text", Object.assign({x, y, "text-anchor":"middle",
+    "font-family":"PingFang SC, sans-serif", "font-weight":"800"}, attrs||{}));
+  t.textContent = s; svg.appendChild(t); return t;
+}
+function toggle(btn){
+  const card = btn.closest(".card");
+  card.classList.toggle("revealed");
+  btn.textContent = card.classList.contains("revealed") ? "↺ 再变回去" : "按一下，看真相";
+}
+
+/* 1. Müller-Lyer 缪勒-莱尔 */
+(function(){
+  const s = document.getElementById("svg1");
+  const L="#3a2e26", W=6;
+  // top line: fins OUT (looks longer)
+  add(s,"line",{x1:80,y1:80,x2:320,y2:80,stroke:L,"stroke-width":W,"stroke-linecap":"round"});
+  [[80,80,58,60],[80,80,58,100],[320,80,342,60],[320,80,342,100]].forEach(p=>
+    add(s,"line",{x1:p[0],y1:p[1],x2:p[2],y2:p[3],stroke:L,"stroke-width":W,"stroke-linecap":"round"}));
+  // bottom line: fins IN (looks shorter)
+  add(s,"line",{x1:80,y1:170,x2:320,y2:170,stroke:L,"stroke-width":W,"stroke-linecap":"round"});
+  [[80,170,102,150],[80,170,102,190],[320,170,298,150],[320,170,298,190]].forEach(p=>
+    add(s,"line",{x1:p[0],y1:p[1],x2:p[2],y2:p[3],stroke:L,"stroke-width":W,"stroke-linecap":"round"}));
+  // reveal: equal-length guides
+  [80,320].forEach(x=> add(s,"line",{class:"reveal",x1:x,y1:55,x2:x,y2:195,
+    stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"}));
+  txt(s,200,128,"一样长！",{class:"reveal",fill:"#e23b2e","font-size":22});
+})();
+
+/* 2. Ponzo 庞佐 */
+(function(){
+  const s = document.getElementById("svg2");
+  add(s,"line",{class:"hideOnReveal",x1:150,y1:250,x2:185,y2:30,stroke:"#9aa0a6","stroke-width":7,"stroke-linecap":"round"});
+  add(s,"line",{class:"hideOnReveal",x1:250,y1:250,x2:215,y2:30,stroke:"#9aa0a6","stroke-width":7,"stroke-linecap":"round"});
+  // sleepers
+  for(let i=0;i<5;i++){ const y=60+i*40;
+    add(s,"line",{class:"hideOnReveal",x1:175,y1:y,x2:225,y2:y,stroke:"#d8dadd","stroke-width":3}); }
+  add(s,"rect",{x:175,y:66,width:50,height:12,rx:3,fill:"#f5821f"});
+  add(s,"rect",{x:175,y:204,width:50,height:12,rx:3,fill:"#f5821f"});
+  [175,225].forEach(x=> add(s,"line",{class:"reveal",x1:x,y1:58,x2:x,y2:224,
+    stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"}));
+  txt(s,200,150,"一样长！",{class:"reveal",fill:"#e23b2e","font-size":22});
+})();
+
+/* 3. Ebbinghaus 艾宾浩斯 */
+(function(){
+  const s = document.getElementById("svg3");
+  // surrounders
+  for(let i=0;i<6;i++){ const a=i*Math.PI/3;
+    add(s,"circle",{class:"hideOnReveal",cx:110+78*Math.cos(a),cy:130+78*Math.sin(a),r:34,fill:"#9bb7d4"}); }
+  for(let i=0;i<9;i++){ const a=i*2*Math.PI/9;
+    add(s,"circle",{class:"hideOnReveal",cx:290+44*Math.cos(a),cy:130+44*Math.sin(a),r:11,fill:"#9bb7d4"}); }
+  // centers (equal)
+  add(s,"circle",{cx:110,cy:130,r:26,fill:"#f5821f"});
+  add(s,"circle",{cx:290,cy:130,r:26,fill:"#f5821f"});
+  add(s,"line",{class:"reveal",x1:110,y1:130,x2:290,y2:130,stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"6 6"});
+  txt(s,200,40,"一样大！",{class:"reveal",fill:"#e23b2e","font-size":22});
+})();
+
+/* 4. Hering 黑林 */
+(function(){
+  const s = document.getElementById("svg4");
+  for(let a=0;a<360;a+=12){ const r=a*Math.PI/180;
+    add(s,"line",{class:"hideOnReveal",x1:200,y1:130,x2:200+340*Math.cos(r),y2:130+340*Math.sin(r),
+      stroke:"#9bb7d4","stroke-width":2}); }
+  add(s,"line",{x1:140,y1:20,x2:140,y2:240,stroke:"#e23b2e","stroke-width":6,"stroke-linecap":"round"});
+  add(s,"line",{x1:260,y1:20,x2:260,y2:240,stroke:"#e23b2e","stroke-width":6,"stroke-linecap":"round"});
+  txt(s,200,135,"其实是直的！",{class:"reveal",fill:"#1e6b2e","font-size":20});
+})();
+
+/* 5. Café wall 咖啡墙 */
+(function(){
+  const s = document.getElementById("svg5");
+  add(s,"rect",{x:0,y:0,width:400,height:232,fill:"#9a9a9a"}); // mortar
+  const rowH=36, th=30, tw=40;
+  const mortarY=[];
+  for(let r=0;r<6;r++){
+    const y=8+r*36, off=(r%2)*20;
+    mortarY.push(y-3);
+    for(let c=-1;c<11;c++){
+      const x=8+c*tw+off;
+      add(s,"rect",{x,y,width:tw,height:th,fill:(c%2===0)?"#161616":"#fbfbfb"});
+    }
+  }
+  // reveal straight guides on the mortar lines
+  for(let r=1;r<6;r++){ const y=8+r*36-3;
+    add(s,"line",{class:"reveal",x1:0,y1:y,x2:400,y2:y,stroke:"#e23b2e","stroke-width":3}); }
+})();
+
+/* 6. Kanizsa 卡尼莎三角 */
+(function(){
+  const s = document.getElementById("svg6");
+  const cx=200, cy=145, r=38;
+  const V=[[200,60],[112,212],[288,212]];
+  V.forEach(p=>{
+    add(s,"circle",{cx:p[0],cy:p[1],r:r,fill:"#2b2b2b"});
+    // carve mouth toward centroid with a white wedge
+    const ang=Math.atan2(cy-p[1], cx-p[0]);
+    const half=32*Math.PI/180, R=r*1.7;
+    const x1=p[0]+R*Math.cos(ang-half), y1=p[1]+R*Math.sin(ang-half);
+    const x2=p[0]+R*Math.cos(ang+half), y2=p[1]+R*Math.sin(ang+half);
+    add(s,"polygon",{points:`${p[0]},${p[1]} ${x1},${y1} ${x2},${y2}`,fill:"#ffffff"});
+  });
+  add(s,"polygon",{class:"reveal",points:`${V[0][0]},${V[0][1]} ${V[1][0]},${V[1][1]} ${V[2][0]},${V[2][1]}`,
+    fill:"none",stroke:"#e23b2e","stroke-width":3,"stroke-dasharray":"7 6"});
+  txt(s,200,30,"没有三角形！",{class:"reveal",fill:"#e23b2e","font-size":20});
+})();
+
+/* 7. Simultaneous contrast 同时对比 */
+(function(){
+  const s = document.getElementById("svg7");
+  add(s,"rect",{x:0,y:0,width:200,height:200,fill:"#202020"});
+  add(s,"rect",{x:200,y:0,width:200,height:200,fill:"#dddddd"});
+  add(s,"rect",{x:55,y:60,width:80,height:80,rx:6,fill:"#8a8a8a"});
+  add(s,"rect",{x:265,y:60,width:80,height:80,rx:6,fill:"#8a8a8a"});
+  add(s,"rect",{class:"reveal",x:135,y:82,width:130,height:36,fill:"#8a8a8a"});
+  const t=txt(s,200,176,"颜色一样！",{class:"reveal",fill:"#e23b2e","font-size":22,
+    stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
+})();
+
+/* 8. Uniform bar on gradient 渐变上的灰带 */
+(function(){
+  const s = document.getElementById("svg8");
+  const defs=add(s,"defs",{});
+  const g=el("linearGradient",{id:"grad8",x1:"0",y1:"0",x2:"1",y2:"0"});
+  g.appendChild(el("stop",{offset:"0","stop-color":"#262626"}));
+  g.appendChild(el("stop",{offset:"1","stop-color":"#e9e9e9"}));
+  defs.appendChild(g);
+  add(s,"rect",{x:0,y:0,width:400,height:200,fill:"url(#grad8)"});
+  add(s,"rect",{class:"reveal",x:0,y:0,width:400,height:200,fill:"#777777"}); // cover on reveal
+  add(s,"rect",{x:40,y:80,width:320,height:40,rx:4,fill:"#9a9a9a"});        // uniform bar (drawn last)
+  txt(s,200,160,"整条都一样！",{class:"reveal",fill:"#e23b2e","font-size":22,
+    stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
+})();
+</script>
+</body>
+</html>
