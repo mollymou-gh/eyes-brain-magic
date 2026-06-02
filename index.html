@@ -83,6 +83,27 @@
   .history-intro{ background:#eaf2fb; }
   .history-intro h2{ color:var(--accent2); }
   .history-intro p{ font-size:17px; color:#3f5468; }
+  /* 原理方框「为什么会这样」 */
+  .principle{
+    margin-top:14px; background:#fff3e2; border-left:6px solid var(--accent);
+    border-radius:0 14px 14px 0; padding:13px 18px; font-size:15px; color:#6b513a;
+  }
+  .principle .tag{
+    display:inline-block; font-size:13px; font-weight:800; color:#fff;
+    background:var(--accent); padding:3px 12px; border-radius:20px; margin-bottom:8px;
+  }
+  .principle p{ margin:0; line-height:1.65; }
+  .principle b{ color:#c2630a; }
+  /* 4 个小窍门总结 */
+  .rules{ background:#fff3e2; }
+  .rules h2{ color:var(--accent); }
+  .rules > p{ font-size:17px; color:#6b513a; margin:6px 0 14px; }
+  .rules ul{ margin:0; padding-left:4px; list-style:none; }
+  .rules li{
+    font-size:16px; color:#5c4530; background:#fff; border-radius:14px;
+    padding:12px 16px; margin:10px 0; box-shadow:0 4px 14px rgba(180,120,40,.08);
+  }
+  .rules li b{ color:var(--accent); }
   /* reveal animation hooks */
   .reveal{ opacity:0; transition:opacity .5s ease; }
   .card.revealed .reveal{ opacity:1; }
@@ -127,6 +148,10 @@
       <p class="truth" data-i18n="c1tr"><b>真相：</b>一样长！是两头的小翅膀骗了你。</p>
       <p class="brain" data-i18n="c1b"><b>大脑在想：</b>看到向外张开的翅膀，大脑就觉得这条线"伸得更远"，于是把它看长了。</p>
     </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c1p">这背后的规则叫"远近规则"。大脑有个老习惯：觉得离得越远的东西，真实个头越大。向外张开的翅膀让大脑以为这条线"通向远方"，于是悄悄把它放大了。</p>
+    </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
       <p data-i18n="c1h">1889 年，德国医生<b>弗朗茨·缪勒-莱尔</b>第一个画出这对"长翅膀的箭"。它是最有名的视错觉之一，连科学家到今天都还在研究大脑为什么会被它骗到。</p>
@@ -142,6 +167,10 @@
     <div class="explain">
       <p class="truth" data-i18n="c2tr"><b>真相：</b>两根一样长！</p>
       <p class="brain" data-i18n="c2b"><b>大脑在想：</b>铁轨越远越窄，大脑觉得上面那根"在很远的地方"。那么远还这么宽，一定很长——所以它被看大了。</p>
+    </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c2p">同样是"远近规则"。两条铁轨越往上靠得越近，大脑就当成"伸向远方的路"。上面那根木棍像在很远处——"那么远还这么长，肯定特别大"，于是被放大了。</p>
     </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
@@ -159,6 +188,10 @@
       <p class="truth" data-i18n="c3tr"><b>真相：</b>两个橙色圆一样大！</p>
       <p class="brain" data-i18n="c3b"><b>大脑在想：</b>旁边都是大伙伴，橙圆就显得小；旁边都是小伙伴，橙圆就显得大。大脑最爱和邻居比一比。</p>
     </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c3p">这背后的规则叫"比较规则"。大脑几乎从不单看一样东西，总要和旁边比一比。橙圆旁边都是大块头，它就显得小；旁边都是小不点，它就显得大。</p>
+    </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
       <p data-i18n="c3h">由德国心理学家<b>艾宾浩斯</b>在 100 多年前发现，后来英国学者<b>铁钦纳</b>让它出了名，所以它还有个名字叫"铁钦纳圆"。</p>
@@ -174,6 +207,10 @@
     <div class="explain">
       <p class="truth" data-i18n="c4tr"><b>真相：</b>笔直笔直的，一点都不弯！</p>
       <p class="brain" data-i18n="c4b"><b>大脑在想：</b>后面的线像从远处冲过来，大脑以为画里有"深远的空间"，就忍不住把直线看弯了。</p>
+    </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c4p">又是"远近规则"在捣乱。放射的线像从远处飞奔而来，大脑以为画面有了深度，就照着"近处该往外鼓"的样子，把笔直的线看成了弯的。</p>
     </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
@@ -191,6 +228,10 @@
       <p class="truth" data-i18n="c5tr"><b>真相：</b>每一排都是平平的、互相平行！</p>
       <p class="brain" data-i18n="c5b"><b>大脑在想：</b>黑白格子排得一上一下错开，灰色的缝把大脑骗了，让平直的线看起来斜斜的。</p>
     </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c5p">这背后的规则叫"边界规则"。黑格白格一上一下错开，中间又夹着灰缝，大脑判断"线到底在哪"时会算偏一点点；一排排加起来，直线就被看歪了。</p>
+    </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
       <p data-i18n="c5h">最早在 1894 年由学者<b>闵斯特伯格</b>发现。1973 年，英国科学家<b>格雷戈里</b>在布里斯托一家咖啡馆的墙砖上又看到它——"咖啡墙"这个名字就是这么来的！</p>
@@ -206,6 +247,10 @@
     <div class="explain">
       <p class="truth" data-i18n="c6tr"><b>真相：</b>纸上根本没有三角形！那条边是你的大脑画上去的。</p>
       <p class="brain" data-i18n="c6b"><b>大脑在想：</b>看到三个缺了口的圆，大脑猜"一定有个白三角盖在上面"，就贴心地帮你补了出来。</p>
+    </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c6p">这背后的规则叫"脑补规则"。大脑不喜欢"缺一块"，看到三个缺口，它会挑一个最简单的解释——"有个白三角盖在上面"，然后自己把看不见的边画出来。</p>
     </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
@@ -223,6 +268,10 @@
       <p class="truth" data-i18n="c7tr"><b>真相：</b>两块灰色一模一样！</p>
       <p class="brain" data-i18n="c7b"><b>大脑在想：</b>深色旁边显得亮，浅色旁边显得暗。看颜色的时候，大脑总会偷偷瞄一眼它的邻居。</p>
     </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c7p">还是"比较规则"。大脑看亮暗也靠和邻居比：旁边黑，方块就显得亮；旁边白，方块就显得暗。其实方块一点没变。</p>
+    </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
       <p data-i18n="c7h">1839 年，法国化学家<b>谢弗勒尔</b>在染坊里研究毛线颜色时发现：同一种颜色，旁边的颜色不一样，看起来就不一样。他把它总结成"同时对比定律"。</p>
@@ -239,10 +288,25 @@
       <p class="truth" data-i18n="c8tr"><b>真相：</b>整条灰带，从头到尾颜色完全一样！</p>
       <p class="brain" data-i18n="c8b"><b>大脑在想：</b>背景从黑慢慢变白，大脑被背景带着跑，就以为灰带也在变颜色。</p>
     </div>
+    <div class="principle">
+      <span class="tag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c8p">还是"比较规则"。大脑最在意"变化"和"差别"：背景从黑慢慢变白，大脑被这股变化带着走，就以为中间的灰带也在跟着变。</p>
+    </div>
     <div class="history">
       <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
       <p data-i18n="c8h">1865 年，奥地利科学家<b>恩斯特·马赫</b>发现：在明暗交界的地方，大脑会把亮暗的差别夸大。这种现象就用他的名字命名，叫"马赫带"。</p>
     </div>
+  </section>
+
+  <section class="card rules">
+    <h2 data-i18n="rulesH">其实，大脑只用了 4 个小窍门</h2>
+    <p data-i18n="rulesP">看完前面这些，你发现了吗？这么多有趣的错觉，背后其实只是大脑的 4 个小习惯：</p>
+    <ul>
+      <li data-i18n="rule1"><b>① 远近规则</b>——觉得"远"的东西真实更大。（第 1、2、4 关用了它）</li>
+      <li data-i18n="rule2"><b>② 比较规则</b>——看大小、看亮暗，都要和旁边比一比。（第 3、7、8 关）</li>
+      <li data-i18n="rule3"><b>③ 脑补规则</b>——看到缺口，就自己补出最简单的图案。（第 6 关）</li>
+      <li data-i18n="rule4"><b>④ 边界规则</b>——判断"线和边在哪里"时会算偏一点点。（第 5 关）</li>
+    </ul>
   </section>
 
   <section class="card closing">
@@ -269,6 +333,23 @@ const TR = {
     zh:`早在两千多年前，古希腊的<b>亚里士多德</b>就发现：盯着流水看久了，再看旁边的石头，石头好像在往反方向动。不过像科学家那样认真研究这些图，是大约 170 年前才开始的——<b>1855 年</b>，德国人<b>奥佩尔</b>第一个给它们起了名字，叫"几何视错觉"。从那以后，许多科学家各自发现了不同的错觉。下面每一关，差不多都用发现它的那位科学家的名字来命名哦。`,
     en:`Over 2,000 years ago, the ancient Greek thinker <b>Aristotle</b> noticed that after staring at flowing water, nearby rocks seem to drift the other way. But studying these pictures like real scientists only began about 170 years ago — in <b>1855</b>, the German scholar <b>Oppel</b> was the first to give them a name: "geometrical-optical illusions." Since then, many scientists have each discovered different illusions. Almost every puzzle below is named after the scientist who found it!`},
   ht:{zh:`小档案 · 是谁发现的`, en:`Fact File · Who Discovered It`},
+  pt:{zh:`为什么会这样？`, en:`Why does this happen?`},
+
+  c1p:{zh:`这背后的规则叫"远近规则"。大脑有个老习惯：觉得离得越远的东西，真实个头越大。向外张开的翅膀让大脑以为这条线"通向远方"，于是悄悄把它放大了。`, en:`The rule behind this is the "near-and-far rule." The brain has an old habit: it thinks things that look farther away are really bigger. The outward wings make the brain feel the line "stretches into the distance," so it quietly enlarges it.`},
+  c2p:{zh:`同样是"远近规则"。两条铁轨越往上靠得越近，大脑就当成"伸向远方的路"。上面那根木棍像在很远处——"那么远还这么长，肯定特别大"，于是被放大了。`, en:`This is the same "near-and-far rule." The rails come together toward the top, so the brain reads them as a road going into the distance. The top stick looks far away — "that far and still this long? it must be huge" — so it gets enlarged.`},
+  c3p:{zh:`这背后的规则叫"比较规则"。大脑几乎从不单看一样东西，总要和旁边比一比。橙圆旁边都是大块头，它就显得小；旁边都是小不点，它就显得大。`, en:`The rule behind this is the "compare rule." The brain almost never looks at one thing alone — it always compares with the neighbours. Next to big circles the orange one looks small; next to tiny ones it looks big.`},
+  c4p:{zh:`又是"远近规则"在捣乱。放射的线像从远处飞奔而来，大脑以为画面有了深度，就照着"近处该往外鼓"的样子，把笔直的线看成了弯的。`, en:`The "near-and-far rule" is at work again. The radiating lines look like they rush in from far away, so the brain thinks the picture has depth — and bends the straight lines the way a close-up bulge would look.`},
+  c5p:{zh:`这背后的规则叫"边界规则"。黑格白格一上一下错开，中间又夹着灰缝，大脑判断"线到底在哪"时会算偏一点点；一排排加起来，直线就被看歪了。`, en:`The rule behind this is the "edge rule." The black and white tiles are shifted up and down with grey lines between them, so the brain misjudges exactly where each edge is — just a little. Add up a whole row and the straight lines look slanted.`},
+  c6p:{zh:`这背后的规则叫"脑补规则"。大脑不喜欢"缺一块"，看到三个缺口，它会挑一个最简单的解释——"有个白三角盖在上面"，然后自己把看不见的边画出来。`, en:`The rule behind this is the "fill-in rule." The brain dislikes missing pieces. Seeing three gaps, it picks the simplest explanation — "a white triangle is lying on top" — and draws the invisible edges in for you.`},
+  c7p:{zh:`还是"比较规则"。大脑看亮暗也靠和邻居比：旁边黑，方块就显得亮；旁边白，方块就显得暗。其实方块一点没变。`, en:`The "compare rule" again. The brain judges bright and dark by the neighbours too: next to black the square looks bright; next to white it looks dark. The square itself never changed.`},
+  c8p:{zh:`还是"比较规则"。大脑最在意"变化"和"差别"：背景从黑慢慢变白，大脑被这股变化带着走，就以为中间的灰带也在跟着变。`, en:`The "compare rule" once more. The brain cares most about change and difference: as the background slowly goes from black to white, the brain gets swept along and assumes the grey bar is changing too.`},
+
+  rulesH:{zh:`其实，大脑只用了 4 个小窍门`, en:`Really, the Brain Uses Just 4 Little Tricks`},
+  rulesP:{zh:`看完前面这些，你发现了吗？这么多有趣的错觉，背后其实只是大脑的 4 个小习惯：`, en:`Did you notice? All these fun illusions really come from just 4 little habits of the brain:`},
+  rule1:{zh:`<b>① 远近规则</b>——觉得"远"的东西真实更大。（第 1、2、4 关用了它）`, en:`<b>① The near-and-far rule</b> — things that seem "far away" are taken to be really bigger. (Puzzles 1, 2 and 4)`},
+  rule2:{zh:`<b>② 比较规则</b>——看大小、看亮暗，都要和旁边比一比。（第 3、7、8 关）`, en:`<b>② The compare rule</b> — the brain judges size and brightness by comparing with the neighbours. (Puzzles 3, 7 and 8)`},
+  rule3:{zh:`<b>③ 脑补规则</b>——看到缺口，就自己补出最简单的图案。（第 6 关）`, en:`<b>③ The fill-in rule</b> — seeing gaps, the brain fills in the simplest complete shape. (Puzzle 6)`},
+  rule4:{zh:`<b>④ 边界规则</b>——判断"线和边在哪里"时会算偏一点点。（第 5 关）`, en:`<b>④ The edge rule</b> — the brain misjudges exactly where lines and edges are. (Puzzle 5)`},
 
   c1t:{zh:`两条线，哪条更长？`, en:`Two Lines — Which Is Longer?`},
   c1l:{zh:`先猜一猜：上面那条，还是下面那条更长呢？`, en:`Take a guess: which line is longer, the top one or the bottom one?`},
