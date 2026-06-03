@@ -104,6 +104,12 @@
     padding:12px 16px; margin:10px 0; box-shadow:0 4px 14px rgba(180,120,40,.08);
   }
   .rules li b{ color:var(--accent); }
+  /* 挑战关 */
+  .card.chal .badge{ background:#7c5cbf; }
+  .challenge-intro{ background:#efe9fb; }
+  .challenge-intro h2{ color:#6a4bbf; }
+  .challenge-intro p{ font-size:17px; color:#4a3f63; }
+  .principle .tag.chaltag{ background:#7c5cbf; }
   /* reveal animation hooks */
   .reveal{ opacity:0; transition:opacity .5s ease; }
   .card.revealed .reveal{ opacity:1; }
@@ -309,6 +315,97 @@
     </ul>
   </section>
 
+  <section class="card challenge-intro">
+    <h2 data-i18n="chalH">挑战关 · 高手来挑战！</h2>
+    <p data-i18n="chalP">前面的 4 个小窍门已经很厉害了，但大脑还有更神奇的本领！下面这几关更难，用到的是全新的招数——有的图明明没动，你却看见它在转。</p>
+  </section>
+
+  <section class="card chal" id="c9">
+    <div class="badge">9</div>
+    <h2 data-i18n="c9t">这张图在动吗？</h2>
+    <p class="lead" data-i18n="c9l">盯着中间慢慢看，再让眼睛在图上四处看看、眨眨眼——那些圆圈是不是在悄悄转？</p>
+    <div class="figure"><svg id="svg9" viewBox="0 0 400 320"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth" data-i18n="c9tr"><b>真相：</b>这张图一动也没动！它是完全静止的图片。</p>
+      <p class="brain" data-i18n="c9b"><b>大脑在想：</b>每次你的眼睛一动或一眨，大脑都飞快地比较明暗。这种排列骗过了它，让它以为有东西在转。</p>
+    </div>
+    <div class="principle">
+      <span class="tag chaltag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c9p">这背后的规则叫"运动规则"。大脑判断"动没动"，靠的是比较明暗变化的快慢。这张图把黑、深、白、浅排成特别的顺序，你的眼睛一抖，大脑就错把它当成了真的运动。所以——直直地盯住一个点，它反而会停下来！</p>
+    </div>
+    <div class="history">
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c9h">2003 年，日本科学家<b>北冈明佳</b>做出了最有名的版本"旋转的蛇"。这类"明明静止却像在动"的图，叫"周边漂移错觉"。</p>
+    </div>
+  </section>
+
+  <section class="card chal" id="c10">
+    <div class="badge">10</div>
+    <h2 data-i18n="c10t">造得出来的三角形吗？</h2>
+    <p class="lead" data-i18n="c10l">这个三角形看起来很普通——可你能用积木在桌上搭出一个一模一样的吗？</p>
+    <div class="figure"><svg id="svg10" viewBox="0 0 280 243">
+      <path fill="#fff3b0" stroke="#3a352c" stroke-width="1.6" stroke-linejoin="round" d="M 55.0625,182.4375 L 80.6875,182.5625 L 151.21875,59.84375 L 252.21615,228.15076 L 264.76729,205.25818 L 151.5625,13.25 L 55.0625,182.4375 z"/>
+      <path fill="#b9e0c9" stroke="#3a352c" stroke-width="1.6" stroke-linejoin="round" d="M 15.625,206.0625 L 27.5,228.4375 L 252.30454,228.28334 L 151.23246,59.859344 L 138.54873,81.934334 L 211.73429,205.92661 L 15.625,206.0625 z"/>
+      <path fill="#d9c7e8" stroke="#3a352c" stroke-width="1.6" stroke-linejoin="round" d="M 124.05609,12.990601 L 15.638759,206.0253 L 211.76418,205.96833 L 197.88064,182.51185 L 54.948939,182.532 L 151.67357,13.253813 L 124.05609,12.990601 z"/>
+      <circle class="reveal" cx="150" cy="70" r="30" fill="none" stroke="#e23b2e" stroke-width="3" stroke-dasharray="7 6"/>
+      <text class="reveal" data-i18n="c10rv" x="150" y="26" text-anchor="middle" font-family="PingFang SC, sans-serif" font-weight="800" fill="#e23b2e" font-size="18">这里接不上！</text>
+    </svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth" data-i18n="c10tr"><b>真相：</b>造不出来！这是个"不可能图形"，现实里根本拼不成。</p>
+      <p class="brain" data-i18n="c10b"><b>大脑在想：</b>每一个角单独看都没问题，大脑就一块一块地拼，等拼完才发现：整体根本接不上！</p>
+    </div>
+    <div class="principle">
+      <span class="tag chaltag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c10p">这背后的规则叫"立体脑补规则"。大脑特别擅长把平面的线条想象成立体的东西。这张图每个局部都给了"对的"立体线索，大脑照单全收，可这些线索合在一起是自相矛盾的——于是出现了一个只能画、不能造的三角形。</p>
+    </div>
+    <div class="history">
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c10h">1934 年，瑞典艺术家<b>罗特斯瓦德</b>第一个画出它；1958 年，英国的<b>彭罗斯父子</b>又各自发表，所以它常被叫做"彭罗斯三角"。</p>
+    </div>
+  </section>
+
+  <section class="card chal" id="c11">
+    <div class="badge">11</div>
+    <h2 data-i18n="c11t">是花瓶，还是两张脸？</h2>
+    <p class="lead" data-i18n="c11l">中间白白的是一个花瓶……再看看两边的黑色，是不是两张面对面的脸？</p>
+    <div class="figure"><svg id="svg11" viewBox="0 0 400 240"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth" data-i18n="c11tr"><b>真相：</b>两种都对！同一张图，可以看成花瓶，也可以看成两张脸。</p>
+      <p class="brain" data-i18n="c11b"><b>大脑在想：</b>大脑一次只能挑一个当"主角"：选白色，就看见花瓶；选黑色，就看见脸。它会在两个之间来回跳。</p>
+    </div>
+    <div class="principle">
+      <span class="tag chaltag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c11p">这背后的规则叫"主角规则"（图形与背景）。看东西时，大脑必须决定"谁是主角、谁是背景"。这张图故意做得两边都能当主角，大脑拿不定主意，就在花瓶和脸之间反复横跳。</p>
+    </div>
+    <div class="history">
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c11h">1915 年，丹麦心理学家<b>埃德加·鲁宾</b>提出这个"花瓶脸"，用来说明大脑怎么分"主角和背景"。</p>
+    </div>
+  </section>
+
+  <section class="card chal" id="c12">
+    <div class="badge">12</div>
+    <h2 data-i18n="c12t">盯久了会冒出的颜色</h2>
+    <p class="lead" data-i18n="c12l">盯着图中间的小黑点，心里慢慢数到 20，千万别移开眼睛——然后按下按钮。</p>
+    <div class="figure"><svg id="svg12" viewBox="0 0 400 200"></svg></div>
+    <button class="reveal-btn" onclick="toggle(this)">按一下，看真相</button>
+    <div class="explain">
+      <p class="truth" data-i18n="c12tr"><b>真相：</b>白板上冒出一个淡淡的<b>粉红色</b>影子！其实白板上什么都没有，颜色是你的眼睛"造"出来的。</p>
+      <p class="brain" data-i18n="c12b"><b>大脑在想：</b>盯着绿色太久，眼睛里管绿色的小帮手"累趴下"了；一看白板，管粉红的还在用力，你就看见了粉红色。</p>
+    </div>
+    <div class="principle">
+      <span class="tag chaltag" data-i18n="pt">为什么会这样？</span>
+      <p data-i18n="c12p">这背后的规则叫"眼睛会累规则"。眼睛里看颜色的细胞是成对工作的（红配绿、蓝配黄）。长时间盯着一种颜色，那一边累了，换看白色时，另一边就冒出来，变成相反的颜色——这叫"视觉残像"。</p>
+    </div>
+    <div class="history">
+      <span class="tag" data-i18n="ht">小档案 · 是谁发现的</span>
+      <p data-i18n="c12h">这种"相反颜色"的现象，支持了科学家<b>黑林</b>提出的"对立色"理论——你在第 4 关也见过他哦！</p>
+    </div>
+  </section>
+
   <section class="card closing">
     <h2 data-i18n="clH">原来如此！</h2>
     <p data-i18n="cl1">我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。</p>
@@ -350,6 +447,41 @@ const TR = {
   rule2:{zh:`<b>② 比较规则</b>——看大小、看亮暗，都要和旁边比一比。（第 3、7、8 关）`, en:`<b>② The compare rule</b> — the brain judges size and brightness by comparing with the neighbours. (Puzzles 3, 7 and 8)`},
   rule3:{zh:`<b>③ 脑补规则</b>——看到缺口，就自己补出最简单的图案。（第 6 关）`, en:`<b>③ The fill-in rule</b> — seeing gaps, the brain fills in the simplest complete shape. (Puzzle 6)`},
   rule4:{zh:`<b>④ 边界规则</b>——判断"线和边在哪里"时会算偏一点点。（第 5 关）`, en:`<b>④ The edge rule</b> — the brain misjudges exactly where lines and edges are. (Puzzle 5)`},
+
+  chalH:{zh:`挑战关 · 高手来挑战！`, en:`Challenge Round · For Brave Explorers!`},
+  chalP:{zh:`前面的 4 个小窍门已经很厉害了，但大脑还有更神奇的本领！下面这几关更难，用到的是全新的招数——有的图明明没动，你却看见它在转。`, en:`The 4 little tricks were clever — but the brain has even more amazing powers! These puzzles are harder and use brand-new tricks: some pictures never move, yet you'll see them spinning.`},
+
+  c9t:{zh:`这张图在动吗？`, en:`Is This Picture Moving?`},
+  c9l:{zh:`盯着中间慢慢看，再让眼睛在图上四处看看、眨眨眼——那些圆圈是不是在悄悄转？`, en:`Look at the middle, then let your eyes wander around the picture and blink — aren't the circles quietly turning?`},
+  c9tr:{zh:`<b>真相：</b>这张图一动也没动！它是完全静止的图片。`, en:`<b>The truth:</b> The picture isn't moving at all — it's a completely still image!`},
+  c9b:{zh:`<b>大脑在想：</b>每次你的眼睛一动或一眨，大脑都飞快地比较明暗。这种排列骗过了它，让它以为有东西在转。`, en:`<b>What the brain thinks:</b> Every time your eyes move or blink, the brain quickly compares light and dark. This pattern fools it into thinking something is spinning.`},
+  c9p:{zh:`这背后的规则叫"运动规则"。大脑判断"动没动"，靠的是比较明暗变化的快慢。这张图把黑、深、白、浅排成特别的顺序，你的眼睛一抖，大脑就错把它当成了真的运动。所以——直直地盯住一个点，它反而会停下来！`, en:`The rule here is the "motion rule." The brain decides whether something moves by comparing how fast light and dark change. This picture lines up black, dark, white and light in a special order, so a tiny flick of your eyes makes the brain read it as real movement. Stare hard at one single point and it actually stops!`},
+  c9h:{zh:`2003 年，日本科学家<b>北冈明佳</b>做出了最有名的版本"旋转的蛇"。这类"明明静止却像在动"的图，叫"周边漂移错觉"。`, en:`In 2003, the Japanese scientist <b>Akiyoshi Kitaoka</b> created the most famous version, "Rotating Snakes." These still-but-seemingly-moving pictures are called the "peripheral drift illusion."`},
+  c9rv:{zh:`一动没动！`, en:`Not moving!`},
+
+  c10t:{zh:`造得出来的三角形吗？`, en:`Could You Ever Build This Triangle?`},
+  c10l:{zh:`这个三角形看起来很普通——可你能用积木在桌上搭出一个一模一样的吗？`, en:`This triangle looks normal — but could you build a real one out of blocks on a table?`},
+  c10tr:{zh:`<b>真相：</b>造不出来！这是个"不可能图形"，现实里根本拼不成。`, en:`<b>The truth:</b> You can't! It's an "impossible figure" — it can never be built in real life.`},
+  c10b:{zh:`<b>大脑在想：</b>每一个角单独看都没问题，大脑就一块一块地拼，等拼完才发现：整体根本接不上！`, en:`<b>What the brain thinks:</b> Each corner looks fine on its own, so the brain joins them piece by piece — and only at the end realises the whole thing can't connect!`},
+  c10p:{zh:`这背后的规则叫"立体脑补规则"。大脑特别擅长把平面的线条想象成立体的东西。这张图每个局部都给了"对的"立体线索，大脑照单全收，可这些线索合在一起是自相矛盾的——于是出现了一个只能画、不能造的三角形。`, en:`The rule here is the "3-D guessing rule." The brain is brilliant at turning flat lines into solid objects. Every small part of this picture gives "correct" 3-D clues, so the brain accepts them all — but together they contradict each other, making a triangle you can draw but never build.`},
+  c10h:{zh:`1934 年，瑞典艺术家<b>罗特斯瓦德</b>第一个画出它；1958 年，英国的<b>彭罗斯父子</b>又各自发表，所以它常被叫做"彭罗斯三角"。`, en:`In 1934 the Swedish artist <b>Reutersvärd</b> drew it first; in 1958 the British <b>Penroses, father and son,</b> published it again — so it's often called the "Penrose triangle."`},
+  c10rv:{zh:`这里接不上！`, en:`It can't connect here!`},
+
+  c11t:{zh:`是花瓶，还是两张脸？`, en:`A Vase, or Two Faces?`},
+  c11l:{zh:`中间白白的是一个花瓶……再看看两边的黑色，是不是两张面对面的脸？`, en:`The white shape in the middle is a vase… but look at the black on each side — aren't those two faces looking at each other?`},
+  c11tr:{zh:`<b>真相：</b>两种都对！同一张图，可以看成花瓶，也可以看成两张脸。`, en:`<b>The truth:</b> Both are right! The same picture can be a vase, or two faces.`},
+  c11b:{zh:`<b>大脑在想：</b>大脑一次只能挑一个当"主角"：选白色，就看见花瓶；选黑色，就看见脸。它会在两个之间来回跳。`, en:`<b>What the brain thinks:</b> The brain can only pick one "main character" at a time: choose white and you see the vase; choose black and you see faces. It keeps flipping between them.`},
+  c11p:{zh:`这背后的规则叫"主角规则"（图形与背景）。看东西时，大脑必须决定"谁是主角、谁是背景"。这张图故意做得两边都能当主角，大脑拿不定主意，就在花瓶和脸之间反复横跳。`, en:`The rule here is the "main-character rule" (figure and ground). When we look, the brain must decide what is the object and what is the background. This picture is made so either side can be the star — so the brain can't decide and keeps switching between the vase and the faces.`},
+  c11h:{zh:`1915 年，丹麦心理学家<b>埃德加·鲁宾</b>提出这个"花瓶脸"，用来说明大脑怎么分"主角和背景"。`, en:`In 1915, the Danish psychologist <b>Edgar Rubin</b> introduced this "vase–faces" picture to show how the brain separates an object from its background.`},
+  c11rv:{zh:`两张脸！`, en:`Two faces!`},
+
+  c12t:{zh:`盯久了会冒出的颜色`, en:`A Colour That Appears After You Stare`},
+  c12l:{zh:`盯着图中间的小黑点，心里慢慢数到 20，千万别移开眼睛——然后按下按钮。`, en:`Stare at the little black dot in the middle and slowly count to 20 without looking away — then press the button.`},
+  c12tr:{zh:`<b>真相：</b>白板上冒出一个淡淡的<b>粉红色</b>影子！其实白板上什么都没有，颜色是你的眼睛"造"出来的。`, en:`<b>The truth:</b> A faint <b>pink</b> shape appears on the white board! There's really nothing there — your own eyes make the colour.`},
+  c12b:{zh:`<b>大脑在想：</b>盯着绿色太久，眼睛里管绿色的小帮手"累趴下"了；一看白板，管粉红的还在用力，你就看见了粉红色。`, en:`<b>What the brain thinks:</b> After staring at green too long, the green helpers in your eyes get tired; look at white and the pink helpers are still going — so you see pink.`},
+  c12p:{zh:`这背后的规则叫"眼睛会累规则"。眼睛里看颜色的细胞是成对工作的（红配绿、蓝配黄）。长时间盯着一种颜色，那一边累了，换看白色时，另一边就冒出来，变成相反的颜色——这叫"视觉残像"。`, en:`The rule here is the "eyes-get-tired rule." The colour cells in your eyes work in pairs (red with green, blue with yellow). Stare at one colour for a long time and that side gets tired; look at white and the other side jumps out as the opposite colour — this is called an "afterimage."`},
+  c12h:{zh:`这种"相反颜色"的现象，支持了科学家<b>黑林</b>提出的"对立色"理论——你在第 4 关也见过他哦！`, en:`This "opposite colour" effect supports the "opponent-colour" theory of the scientist <b>Hering</b> — you met him back in Puzzle 4!`},
+  c12rv:{zh:`看到粉红了吗？`, en:`See the pink?`},
 
   c1t:{zh:`两条线，哪条更长？`, en:`Two Lines — Which Is Longer?`},
   c1l:{zh:`先猜一猜：上面那条，还是下面那条更长呢？`, en:`Take a guess: which line is longer, the top one or the bottom one?`},
@@ -572,6 +704,64 @@ function txt(svg, x, y, key, attrs){
   add(s,"rect",{x:40,y:80,width:320,height:40,rx:4,fill:"#9a9a9a"});
   txt(s,200,160,"svg8",{class:"reveal",fill:"#e23b2e","font-size":22,
     stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
+})();
+
+/* 9. 会动的图（周边漂移 / 旋转的蛇） */
+(function(){
+  const s = document.getElementById("svg9");
+  const cx=200, cy=160;
+  const pal=["#0a0a0a","#33409a","#ffffff","#f4c430"];
+  const rings=[30,54,78,102,126], tk=24, N=48;
+  const P=(r,a)=>[cx+r*Math.cos(a), cy+r*Math.sin(a)];
+  rings.forEach((r0,k)=>{
+    const r1=r0+tk, phase=(k%2)*2;
+    for(let i=0;i<N;i++){
+      const a0=i*2*Math.PI/N, a1=(i+1)*2*Math.PI/N;
+      const p0=P(r1,a0), p1=P(r1,a1), p2=P(r0,a1), p3=P(r0,a0);
+      const d=`M ${p0[0].toFixed(2)} ${p0[1].toFixed(2)} A ${r1} ${r1} 0 0 1 ${p1[0].toFixed(2)} ${p1[1].toFixed(2)} L ${p2[0].toFixed(2)} ${p2[1].toFixed(2)} A ${r0} ${r0} 0 0 0 ${p3[0].toFixed(2)} ${p3[1].toFixed(2)} Z`;
+      add(s,"path",{d, fill:pal[(i+phase)%4]});
+    }
+  });
+  add(s,"circle",{cx,cy,r:4,fill:"#e23b2e"});
+  txt(s,200,24,"c9rv",{class:"reveal",fill:"#1e6b2e","font-size":20});
+})();
+
+/* 11. 鲁宾花瓶（图形-背景） */
+(function(){
+  const s = document.getElementById("svg11");
+  const cx=200;
+  add(s,"rect",{x:0,y:0,width:400,height:240,fill:"#141414"});
+  // 揭晓时两侧变肤色 → 浮现两张脸
+  add(s,"rect",{class:"reveal",x:0,y:0,width:200,height:240,fill:"#e8b48c"});
+  add(s,"rect",{class:"reveal",x:200,y:0,width:200,height:240,fill:"#e8b48c"});
+  // 花瓶轮廓（两侧边缘即人脸侧影）
+  // dx = 花瓶半宽；dx 小=人脸五官凸向中间（额、鼻、唇、下巴），dx 大=凹陷（眼窝、人中）
+  const R=[[40,24],[30,44],[46,62],[34,78],[22,96],[44,110],[32,122],[38,134],[30,146],[48,158],[30,172],[52,190],[66,214],[70,226]];
+  let d="M "+cx+" 16";
+  R.forEach(p=> d+=` L ${cx+p[0]} ${p[1]}`);
+  d+=` L ${cx+44} 236 L ${cx-44} 236`;
+  for(let i=R.length-1;i>=0;i--){ d+=` L ${cx-R[i][0]} ${R[i][1]}`; }
+  d+=" Z";
+  add(s,"path",{d, fill:"#fbfbfb"});
+  // 眼睛（揭晓时出现）——落在鼻梁旁的眼窝处
+  add(s,"circle",{class:"reveal",cx:150,cy:64,r:5,fill:"#2b2b2b"});
+  add(s,"circle",{class:"reveal",cx:250,cy:64,r:5,fill:"#2b2b2b"});
+  txt(s,200,232,"c11rv",{class:"reveal",fill:"#e23b2e","font-size":20,
+    stroke:"#ffffff","stroke-width":4,"paint-order":"stroke"});
+})();
+
+/* 12. 视觉残像（盯久了冒出相反颜色） */
+(function(){
+  const s = document.getElementById("svg12");
+  add(s,"rect",{x:0,y:0,width:400,height:200,fill:"#ffffff"});
+  // 绿色五角星（揭晓后隐去 → 留白 → 浮现粉红残像）
+  const cx=200, cy=92, ro=62, ri=26, pts=[];
+  for(let i=0;i<10;i++){ const a=-Math.PI/2+i*Math.PI/5, r=(i%2===0)?ro:ri;
+    pts.push(`${(cx+r*Math.cos(a)).toFixed(1)},${(cy+r*Math.sin(a)).toFixed(1)}`); }
+  add(s,"polygon",{class:"hideOnReveal",points:pts.join(" "),fill:"#18a558"});
+  // 固定用的小黑点（一直在）
+  add(s,"circle",{cx,cy,r:4,fill:"#111111"});
+  txt(s,200,184,"c12rv",{class:"reveal",fill:"#e23b2e","font-size":18});
 })();
 
 /* 初始化语言 */
