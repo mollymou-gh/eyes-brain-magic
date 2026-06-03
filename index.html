@@ -119,6 +119,12 @@
   .closing{ background:linear-gradient(135deg,#ffe4c0,#ffd0a3); text-align:center; }
   .closing h2{ color:#b85c00; }
   .closing p{ font-size:18px; max-width:640px; margin:10px auto; color:#5c4530; }
+  .gobtn{
+    display:inline-block; margin-top:16px; text-decoration:none;
+    background:#7c5cbf; color:#fff; font-weight:800; font-size:19px;
+    padding:13px 30px; border-radius:40px; box-shadow:0 6px 0 #5e44a0;
+  }
+  .gobtn:active{ transform:translateY(3px); box-shadow:0 3px 0 #5e44a0; }
 </style>
 </head>
 <body>
@@ -411,6 +417,7 @@
     <p data-i18n="cl1">我们的眼睛和大脑，是世界上最棒的<strong>小侦探</strong>。</p>
     <p data-i18n="cl2">它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。</p>
     <p data-i18n="cl3">偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！</p>
+    <a class="gobtn" href="practice.html" data-i18n="quizlink">去做小测验 →</a>
   </section>
 
 </main>
@@ -536,6 +543,7 @@ const TR = {
   cl2:{zh:`它们用平时学到的本领，飞快地猜"世界长什么样"——又快又准。`, en:`Using everything they've learned, they guess what the world looks like — fast, and usually right.`},
   cl3:{zh:`偶尔被这些图片骗到，正说明大脑有多努力、多聪明呀！`, en:`Getting fooled by these pictures now and then just shows how hard-working and clever the brain really is!`},
   ft:{zh:`眼睛与大脑的魔法小课堂 · 图形均为现场绘制，可自由放大`, en:`The Eyes & Brain Magic Classroom · All figures are drawn live and scale freely`},
+  quizlink:{zh:`去做小测验 →`, en:`Try the Brain Quest →`},
 
   /* 图内文字 */
   svg1:{zh:`一样长！`, en:`Same length!`},

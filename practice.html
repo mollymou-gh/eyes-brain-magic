@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>错觉小测验 · 大脑的魔法小课堂</title>
+<style>
+  :root{
+    --bg:#fff7ed; --ink:#3a2e26; --accent:#f5821f; --accent2:#3b82c4;
+    --card:#ffffff; --soft:#fff0db; --line:#f0d9bd; --good:#1e9e54; --bad:#e23b2e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    line-height:1.7;
+  }
+  #langBtn{
+    position:fixed; top:16px; right:16px; z-index:50; cursor:pointer;
+    background:var(--accent2); color:#fff; border:none; font-family:inherit;
+    font-size:16px; font-weight:800; padding:9px 18px; border-radius:30px;
+    box-shadow:0 4px 0 #2c6699;
+  }
+  #langBtn:active{ transform:translateY(2px); box-shadow:0 2px 0 #2c6699; }
+  header{ text-align:center; padding:46px 20px 10px; }
+  header h1{ font-size:clamp(28px,5vw,44px); margin:0 0 8px; color:var(--accent); }
+  header p.sub{ font-size:clamp(15px,2.4vw,19px); margin:0; color:#8a6f57; }
+  .topbar{ max-width:760px; margin:8px auto 0; display:flex; justify-content:space-between;
+    align-items:center; gap:10px; padding:0 16px; flex-wrap:wrap; }
+  .backlink{ color:var(--accent2); font-weight:700; text-decoration:none; font-size:16px; }
+  .printbtn{ background:#fff; border:2px solid var(--accent2); color:var(--accent2);
+    border-radius:30px; padding:6px 16px; font-family:inherit; font-weight:700; cursor:pointer; font-size:14px; }
+  .teacher{
+    max-width:760px; margin:14px auto 0; background:var(--soft);
+    border:2px dashed var(--line); border-radius:18px; padding:13px 20px;
+    font-size:15px; color:#7a6047;
+  }
+  .teacher b{ color:var(--accent2); }
+  .scorebar{
+    position:sticky; top:0; z-index:40; background:rgba(255,247,237,.95);
+    text-align:center; padding:10px; font-size:22px; letter-spacing:3px; color:#e6a700;
+    backdrop-filter:blur(4px);
+  }
+  .scorebar .lbl{ font-size:15px; color:#8a6f57; letter-spacing:0; margin-right:8px; }
+  main{ max-width:760px; margin:0 auto; padding:10px 16px 60px; }
+  .q{
+    background:var(--card); border-radius:24px; padding:22px 24px 24px;
+    margin:22px 0; box-shadow:0 10px 28px rgba(180,120,40,.12);
+  }
+  .std{
+    display:inline-block; font-size:12.5px; font-weight:800; color:#5a708a;
+    background:#eef4fb; padding:4px 12px; border-radius:20px; margin-bottom:10px;
+  }
+  .q h2{ margin:4px 0 16px; font-size:clamp(19px,3.2vw,24px); }
+  .opts{ display:flex; flex-wrap:wrap; gap:12px; }
+  .opt{
+    font-family:inherit; font-size:21px; font-weight:800; cursor:pointer;
+    border:3px solid #e7d8c4; background:#fffdf9; color:var(--ink);
+    border-radius:16px; padding:14px 26px; min-width:78px; transition:transform .08s;
+  }
+  .opt:active{ transform:scale(.96); }
+  .opt.right{ background:#e6f7ec; border-color:var(--good); color:var(--good); }
+  .opt.wrong{ background:#fde9e7; border-color:var(--bad); color:var(--bad); animation:shake .35s; }
+  @keyframes shake{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  /* 长短棒（第1题） */
+  .barbtn{ display:flex; align-items:center; width:100%; min-width:0; padding:12px 16px; }
+  .barbtn .bar{ height:22px; border-radius:6px; background:var(--accent); display:block; }
+  /* 数点（第2题） */
+  .plates{ display:flex; gap:24px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+  .plate{ background:#f3ead9; border-radius:18px; padding:14px; width:150px; min-height:110px;
+    display:flex; flex-wrap:wrap; gap:8px; align-content:center; justify-content:center; }
+  .dot{ width:22px; height:22px; border-radius:50%; background:#c0504d; }
+  .plate.blue .dot{ background:#3b82c4; }
+  .plabel{ text-align:center; font-weight:800; color:#8a6f57; margin-top:4px; }
+  /* 找规律（第5题） */
+  .pattern{ display:flex; gap:8px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+  .sq{ width:38px; height:38px; border-radius:6px; display:flex; align-items:center;
+    justify-content:center; font-weight:800; font-size:22px; color:#8a6f57; }
+  .sq.b{ background:#161616; } .sq.w{ background:#fbfbfb; border:2px solid #ddd; }
+  .sq.qm{ background:#eee; border:2px dashed #bbb; }
+  .sqbtn{ width:64px; height:54px; min-width:0; }
+  .sqbtn.b{ background:#161616; border-color:#161616; }
+  .sqbtn.w{ background:#fbfbfb; }
+  .fb{
+    display:none; margin-top:16px; background:#e6f7ec; border-left:6px solid var(--good);
+    border-radius:0 12px 12px 0; padding:12px 16px; font-size:16px; color:#2c6b45;
+  }
+  .fb.show{ display:block; }
+  .tryagain{ display:none; margin-top:12px; color:var(--bad); font-weight:800; font-size:16px; }
+  .tryagain.show{ display:block; }
+  .finale{
+    display:none; text-align:center; background:linear-gradient(135deg,#ffe4c0,#ffd0a3);
+    border-radius:24px; padding:30px 24px; margin:24px 0;
+  }
+  .finale.show{ display:block; }
+  .finale h2{ color:#b85c00; font-size:26px; margin:0 0 8px; }
+  .finale p{ color:#5c4530; font-size:18px; margin:6px 0; }
+  footer{ text-align:center; padding:10px 20px 50px; color:#a98a6c; font-size:13px; }
+  @media print{
+    #langBtn,.printbtn,.scorebar,.tryagain{ display:none; }
+    .q{ box-shadow:none; border:1px solid #ddd; page-break-inside:avoid; }
+    .fb{ display:block; }
+  }
+</style>
+</head>
+<body>
+
+<button id="langBtn" onclick="setLang(curLang==='zh'?'en':'zh')">EN</button>
+
+<header>
+  <h1 data-i18n="title">错觉小测验</h1>
+  <p class="sub" data-i18n="sub">做完了 12 关？来挑战这些小问题吧！</p>
+</header>
+
+<div class="topbar">
+  <a class="backlink" href="index.html" data-i18n="back">← 回到错觉课堂</a>
+  <button class="printbtn" onclick="window.print()" data-i18n="printBtn">打印这页</button>
+</div>
+
+<div class="teacher" data-i18n="intro">
+  <b>给大人：</b>这一页把刚才的错觉和加州一年级课程标准连起来（科学 NGSS 与数学 CCSS，每题左上角标有对应标准）。小朋友可以在屏幕上点答案，也可以打印成练习纸。
+</div>
+
+<div class="scorebar"><span class="lbl" data-i18n="score">得分</span><span id="stars"></span></div>
+
+<main>
+
+  <!-- Q1 比长短 -->
+  <div class="q" data-q="1">
+    <span class="std" data-i18n="q1s">加州数学 1.MD.1 · 比长短</span>
+    <h2 data-i18n="q1">点一点最长的那根棒子。</h2>
+    <div class="opts" style="flex-direction:column">
+      <button class="opt barbtn" data-correct="0" onclick="answer(this)"><span class="bar" style="width:45%"></span></button>
+      <button class="opt barbtn" data-correct="1" onclick="answer(this)"><span class="bar" style="width:82%"></span></button>
+      <button class="opt barbtn" data-correct="0" onclick="answer(this)"><span class="bar" style="width:30%"></span></button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q1fb">答对了！眼睛有时会被骗，但用尺子量一量，最长的永远最长。（还记得第 1、2 关吗？）</p>
+  </div>
+
+  <!-- Q2 数一数、比多少 -->
+  <div class="q" data-q="2">
+    <span class="std" data-i18n="q2s">加州数学 · 数一数、比多少</span>
+    <h2 data-i18n="q2">哪个盘子里的圆点更多？</h2>
+    <div class="plates">
+      <div>
+        <div class="plate" id="plateL"></div>
+        <div class="plabel" data-i18n="left">左边</div>
+      </div>
+      <div>
+        <div class="plate blue" id="plateR"></div>
+        <div class="plabel" data-i18n="right">右边</div>
+      </div>
+    </div>
+    <div class="opts">
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="left">左边</button>
+      <button class="opt" data-correct="1" onclick="answer(this)" data-i18n="right">右边</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q2fb">对！右边有 7 个，左边只有 4 个，7 比 4 多。数一数就知道，不用猜！（第 3 关：橙圆其实一样大哦）</p>
+  </div>
+
+  <!-- Q3 三角形 -->
+  <div class="q" data-q="3">
+    <span class="std" data-i18n="q3s">加州数学 1.G.1 · 认识形状</span>
+    <h2 data-i18n="q3">一个三角形有几条边？</h2>
+    <div class="opts">
+      <button class="opt" data-correct="0" onclick="answer(this)">2</button>
+      <button class="opt" data-correct="1" onclick="answer(this)">3</button>
+      <button class="opt" data-correct="0" onclick="answer(this)">4</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q3fb">没错！三角形有 3 条边、3 个角。第 6 关的"看不见的三角"和第 10 关的不可能三角，都和三角形有关。</p>
+  </div>
+
+  <!-- Q4 不可能图形 -->
+  <div class="q" data-q="4">
+    <span class="std" data-i18n="q4s">科学思维 · 想一想</span>
+    <h2 data-i18n="q4">第 10 关的"不可能三角"，能用真的积木搭出来吗？</h2>
+    <div class="opts">
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="yes">能</button>
+      <button class="opt" data-correct="1" onclick="answer(this)" data-i18n="no">不能</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q4fb">答对！它只能画在纸上，真实世界里拼不出来——所以叫"不可能图形"。</p>
+  </div>
+
+  <!-- Q5 找规律 -->
+  <div class="q" data-q="5">
+    <span class="std" data-i18n="q5s">加州数学 · 找规律</span>
+    <h2 data-i18n="q5">黑、白、黑、白、黑……下一个是什么颜色？</h2>
+    <div class="pattern">
+      <span class="sq b"></span><span class="sq w"></span><span class="sq b"></span><span class="sq w"></span><span class="sq b"></span><span class="sq qm">?</span>
+    </div>
+    <div class="opts">
+      <button class="opt sqbtn b" data-correct="0" onclick="answer(this)"></button>
+      <button class="opt sqbtn w" data-correct="1" onclick="answer(this)"></button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q5fb">对！这是"黑白黑白"的规律，下一个该轮到白色。第 5 关的咖啡墙就是这样排出来的。</p>
+  </div>
+
+  <!-- Q6 光与看见 -->
+  <div class="q" data-q="6">
+    <span class="std" data-i18n="q6s">加州科学 1-PS4-2 · 光与看见</span>
+    <h2 data-i18n="q6">在一个完全没有光的黑房间里，你能看见自己的玩具吗？</h2>
+    <div class="opts">
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="yes">能</button>
+      <button class="opt" data-correct="1" onclick="answer(this)" data-i18n="no">不能</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q6fb">答对！没有光就看不见。要有光照到玩具、再反射进眼睛，我们才看得见东西。眼睛和大脑的所有魔法，都从"光"开始。</p>
+  </div>
+
+  <!-- Q7 残像/颜色 -->
+  <div class="q" data-q="7">
+    <span class="std" data-i18n="q7s">加州科学 · 颜色与观察</span>
+    <h2 data-i18n="q7">第 12 关里，盯着绿色看久了，白板上冒出的"幽灵颜色"是什么色？</h2>
+    <div class="opts">
+      <button class="opt" data-correct="1" onclick="answer(this)" data-i18n="pink">粉红</button>
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="blue">蓝色</button>
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="green">绿色</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q7fb">对！是粉红色。绿色看累了，相反的粉红就冒出来——这叫"视觉残像"。</p>
+  </div>
+
+  <!-- Q8 科学方法 -->
+  <div class="q" data-q="8">
+    <span class="std" data-i18n="q8s">科学方法 · 像科学家一样</span>
+    <h2 data-i18n="q8">一个聪明的小科学家，会先猜一猜，然后做什么？</h2>
+    <div class="opts">
+      <button class="opt" data-correct="1" onclick="answer(this)" data-i18n="q8a">动手检查一下</button>
+      <button class="opt" data-correct="0" onclick="answer(this)" data-i18n="q8b">马上忘掉</button>
+    </div>
+    <p class="tryagain" data-i18n="try">再试一次！</p>
+    <p class="fb" data-i18n="q8fb">太棒了！先猜（做假设），再检查（做实验）——这就是科学家的办法，也是你玩每一关的办法。</p>
+  </div>
+
+  <div class="finale" id="finale">
+    <h2 data-i18n="finH">全部完成！</h2>
+    <p data-i18n="finP">你答对了所有问题，你就是真正的"错觉小博士"！</p>
+    <p><a class="backlink" href="index.html" data-i18n="back">← 回到错觉课堂</a></p>
+  </div>
+
+</main>
+
+<footer data-i18n="ft">错觉小测验 · 对应加州一年级 NGSS 科学与 CCSS 数学标准</footer>
+
+<script>
+const TR = {
+  title:{zh:`错觉小测验`, en:`Brain Quest: Illusions`},
+  sub:{zh:`做完了 12 关？来挑战这些小问题吧！`, en:`Finished all 12 puzzles? Try these quick questions!`},
+  back:{zh:`← 回到错觉课堂`, en:`← Back to the illusions`},
+  printBtn:{zh:`打印这页`, en:`Print this page`},
+  intro:{zh:`<b>给大人：</b>这一页把刚才的错觉和加州一年级课程标准连起来（科学 NGSS 与数学 CCSS，每题左上角标有对应标准）。小朋友可以在屏幕上点答案，也可以打印成练习纸。`,
+    en:`<b>For grown-ups:</b> This page links the illusions to California Grade 1 standards (NGSS science & CCSS math — each question is tagged at the top-left). Children can tap answers on screen, or you can print it as a worksheet.`},
+  score:{zh:`得分`, en:`Score`},
+  try:{zh:`再试一次！`, en:`Try again!`},
+  left:{zh:`左边`, en:`Left`},
+  right:{zh:`右边`, en:`Right`},
+  yes:{zh:`能`, en:`Yes`},
+  no:{zh:`不能`, en:`No`},
+  pink:{zh:`粉红`, en:`Pink`},
+  blue:{zh:`蓝色`, en:`Blue`},
+  green:{zh:`绿色`, en:`Green`},
+
+  q1s:{zh:`加州数学 1.MD.1 · 比长短`, en:`CA Math 1.MD.1 · Comparing length`},
+  q1:{zh:`点一点最长的那根棒子。`, en:`Tap the longest bar.`},
+  q1fb:{zh:`答对了！眼睛有时会被骗，但用尺子量一量，最长的永远最长。（还记得第 1、2 关吗？）`, en:`Correct! Eyes can be fooled, but a ruler always shows which is longest. (Remember Puzzles 1 & 2?)`},
+
+  q2s:{zh:`加州数学 · 数一数、比多少`, en:`CA Math · Count & compare`},
+  q2:{zh:`哪个盘子里的圆点更多？`, en:`Which plate has MORE dots?`},
+  q2fb:{zh:`对！右边有 7 个，左边只有 4 个，7 比 4 多。数一数就知道，不用猜！（第 3 关：橙圆其实一样大哦）`, en:`Yes! The right plate has 7 and the left has 4 — 7 is more than 4. Counting beats guessing! (In Puzzle 3 the orange circles were actually the same size.)`},
+
+  q3s:{zh:`加州数学 1.G.1 · 认识形状`, en:`CA Math 1.G.1 · Shape attributes`},
+  q3:{zh:`一个三角形有几条边？`, en:`How many sides does a triangle have?`},
+  q3fb:{zh:`没错！三角形有 3 条边、3 个角。第 6 关的"看不见的三角"和第 10 关的不可能三角，都和三角形有关。`, en:`Right! A triangle has 3 sides and 3 corners. Puzzle 6's invisible triangle and Puzzle 10's impossible triangle are both about triangles.`},
+
+  q4s:{zh:`科学思维 · 想一想`, en:`Science thinking · Reasoning`},
+  q4:{zh:`第 10 关的"不可能三角"，能用真的积木搭出来吗？`, en:`Could you build Puzzle 10's impossible triangle with real blocks?`},
+  q4fb:{zh:`答对！它只能画在纸上，真实世界里拼不出来——所以叫"不可能图形"。`, en:`Correct! It can only be drawn on paper, never built in real life — that's why it's an "impossible figure."`},
+
+  q5s:{zh:`加州数学 · 找规律`, en:`CA Math · Patterns`},
+  q5:{zh:`黑、白、黑、白、黑……下一个是什么颜色？`, en:`Black, white, black, white, black… what colour comes next?`},
+  q5fb:{zh:`对！这是"黑白黑白"的规律，下一个该轮到白色。第 5 关的咖啡墙就是这样排出来的。`, en:`Yes! It's a black-white-black-white pattern, so white comes next. Puzzle 5's café wall is built from this pattern.`},
+
+  q6s:{zh:`加州科学 1-PS4-2 · 光与看见`, en:`CA Science 1-PS4-2 · Light & seeing`},
+  q6:{zh:`在一个完全没有光的黑房间里，你能看见自己的玩具吗？`, en:`In a room with NO light at all, can you see your toys?`},
+  q6fb:{zh:`答对！没有光就看不见。要有光照到玩具、再反射进眼睛，我们才看得见东西。眼睛和大脑的所有魔法，都从"光"开始。`, en:`Correct! No light means no seeing. Light must bounce off the toy and into your eyes before you can see it. All the eye-and-brain magic starts with light.`},
+
+  q7s:{zh:`加州科学 · 颜色与观察`, en:`CA Science · Colour & observation`},
+  q7:{zh:`第 12 关里，盯着绿色看久了，白板上冒出的"幽灵颜色"是什么色？`, en:`In Puzzle 12, after staring at green, what "ghost colour" appeared on the white board?`},
+  q7fb:{zh:`对！是粉红色。绿色看累了，相反的粉红就冒出来——这叫"视觉残像"。`, en:`Right — pink! After tiring out the green helpers, the opposite colour, pink, appears. This is called an "afterimage."`},
+
+  q8s:{zh:`科学方法 · 像科学家一样`, en:`Science practice · Think like a scientist`},
+  q8:{zh:`一个聪明的小科学家，会先猜一猜，然后做什么？`, en:`A clever little scientist makes a guess first, then does what?`},
+  q8a:{zh:`动手检查一下`, en:`Check it`},
+  q8b:{zh:`马上忘掉`, en:`Forget it`},
+  q8fb:{zh:`太棒了！先猜（做假设），再检查（做实验）——这就是科学家的办法，也是你玩每一关的办法。`, en:`Great! Guess first (make a prediction), then check (do the test) — that's how scientists work, and how you played every puzzle.`},
+
+  finH:{zh:`全部完成！`, en:`All done!`},
+  finP:{zh:`你答对了所有问题，你就是真正的"错觉小博士"！`, en:`You answered every question — you're a true "Illusion Detective"!`},
+  ft:{zh:`错觉小测验 · 对应加州一年级 NGSS 科学与 CCSS 数学标准`, en:`Brain Quest: Illusions · Aligned with California Grade 1 NGSS science & CCSS math`}
+};
+const TITLE={zh:`错觉小测验 · 大脑的魔法小课堂`, en:`Brain Quest: Illusions · The Brain's Magic Classroom`};
+const TOTAL = 8;
+let curLang = (localStorage.getItem('lang')==='en') ? 'en' : 'zh';
+let stars = 0;
+const solved = new Set();
+
+function renderStars(){
+  let s='';
+  for(let i=0;i<TOTAL;i++) s += (i<stars) ? '★' : '☆';
+  document.getElementById('stars').textContent = s;
+}
+function setLang(lang){
+  curLang = (lang==='en') ? 'en' : 'zh';
+  localStorage.setItem('lang', curLang);
+  document.documentElement.lang = (curLang==='en') ? 'en' : 'zh-CN';
+  document.title = TITLE[curLang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(TR[k]) el.innerHTML = TR[k][curLang];
+  });
+  document.getElementById('langBtn').textContent = (curLang==='en') ? '中文' : 'EN';
+}
+function answer(btn){
+  const q = btn.closest('.q');
+  const id = q.dataset.q;
+  if(solved.has(id)) return;
+  if(btn.dataset.correct === '1'){
+    btn.classList.add('right');
+    q.querySelector('.tryagain').classList.remove('show');
+    q.querySelector('.fb').classList.add('show');
+    solved.add(id); stars++; renderStars();
+    if(solved.size === TOTAL){
+      const f=document.getElementById('finale'); f.classList.add('show');
+      f.scrollIntoView({behavior:'smooth'});
+    }
+  } else {
+    btn.classList.add('wrong');
+    q.querySelector('.tryagain').classList.add('show');
+    setTimeout(()=>btn.classList.remove('wrong'), 360);
+  }
+}
+
+/* 填充数点盘子：左 4 个，右 7 个 */
+(function(){
+  const L=document.getElementById('plateL'), R=document.getElementById('plateR');
+  for(let i=0;i<4;i++){ const d=document.createElement('span'); d.className='dot'; L.appendChild(d); }
+  for(let i=0;i<7;i++){ const d=document.createElement('span'); d.className='dot'; R.appendChild(d); }
+})();
+
+renderStars();
+setLang(curLang);
+</script>
+</body>
+</html>
